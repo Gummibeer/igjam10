@@ -9,7 +9,7 @@ load.prototype = {
         this.load.setPreloadSprite(loadingBar);
 
         // Menu
-        this.game.load.image('btnstart', 'img/btn-start.png');
+        this.game.load.image('btn-start', 'img/btn-start.png');
 
         // Configs
         this.game.load.json('trains', 'config/trains.json');
