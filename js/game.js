@@ -1,17 +1,16 @@
 'use strict';
 
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'gj2016', {
-  create: create,
-  render: render
-});
+var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'stage', {});
 
+game.state.add('Boot', boot);
+game.state.add('Load', load);
+game.state.add('Menu', menu);
+game.state.add('Intro', intro);
 
-function create() {
-  game.stage.backgroundColor = '#124184';
+game.state.add('Level', level);
+game.state.add('Swap', swap);
 
-  game.physics.startSystem(Phaser.Physics.BOX2D);
+game.state.add('GameWon', gamewon);
+game.state.add('GameOver', gameover);
 
-}
-
-function render() {
-}
+game.state.start('Boot');
