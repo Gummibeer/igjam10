@@ -4,6 +4,7 @@ var menu = function (game) {
 menu.prototype = {
     create: function () {
         console.log('menu.create');
+        this.game.add.button(0, 0, 'loading', this.click, this);
     },
     click: function () {
         console.log('menu.click');
