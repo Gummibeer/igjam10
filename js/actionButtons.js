@@ -1,8 +1,9 @@
 var ActionButton = function (options) {
-    this.timeModifier = options.timeModifier || 0;
     this.backgroundSprite = game.add.sprite(options.x, options.y, options.background);
     this.dragSprite = game.add.sprite(options.x, options.y, options.background);
     this.isDragged = false;
+    this.isSlowDown = options.isSlowDown;
+    this.isSpeedUp = options.isSpeedUp;
 };
 
 ActionButton.prototype = {

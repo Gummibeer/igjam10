@@ -13,6 +13,8 @@ level.prototype = {
     foreground: null,
     active: false,
     circleBlack: null,
+    speedUp: null,
+    slowDown: null,
     init: function (config) {
         console.log('level.init');
         this.name = config;
@@ -20,6 +22,8 @@ level.prototype = {
         this.keys = {};
         this.trains = [];
         this.actionButtons = [];
+        this.speedUp = null;
+        this.slowDown = null;
         this.background = null;
         this.foreground = null;
     },
@@ -47,6 +51,7 @@ level.prototype = {
         }.bind(this));
         this.game.world.bringToTop(this.groups.trains);
         this.game.world.bringToTop(this.foreground);
+        this.game.world.bringToTop(this.groups.ui);
         this.game.world.bringToTop(this.circleBlack);
         tween.start();
     },
@@ -112,23 +117,29 @@ level.prototype = {
         }, []);
     },
     createActionButtons: function () {
+        this.groups.ui = this.game.add.group();
+
         var timeAcceleratorButton = new ActionButton({
-            background: 'ui_button_1',
-            speedModifier: 1.5,
+            background: 'btn_speed_up',
+            isSpeedUp: true,
             x: 1085,
             y: 20
         });
         timeAcceleratorButton.init();
+        this.groups.ui.add(timeAcceleratorButton.backgroundSprite);
+
         var timeDeceleratorButton = new ActionButton({
-            background: 'ui_button_2',
-            speedModifier: 0.5,
+            background: 'btn_slow_down',
+            isSlowDown: true,
             x: 1085,
             y: 130
         });
         timeDeceleratorButton.init();
+        this.groups.ui.add(timeDeceleratorButton.backgroundSprite);
+
         this.actionButtons = [timeAcceleratorButton, timeDeceleratorButton];
     },
-    checkCollisions: function () {
+    checkTrainCollisions: function () {
         var trains = this.trains;
 
         function isIntersecting(spriteA, spriteB) {
@@ -180,14 +191,25 @@ level.prototype = {
         if (!draggedButton || !draggedButton.dragSprite._bounds) {
             return;
         }
+        if (draggedButton.isSlowDown && this.slowDown) {
+            return;
+        }
+        if (draggedButton.isSpeedUp && this.speedUp) {
+            return;
+        }
 
         var buttonBoundaries = draggedButton.dragSprite.getBounds();
         var intersectingTrack = this.getTrackSpriteThatIntersectsBoundaries(buttonBoundaries);
 
         if (intersectingTrack) {
-            draggedButton.dragSprite.alpha = 0.7;
-        } else {
-            draggedButton.dragSprite.alpha = 0.2;
+            var boundariesOfTrack = intersectingTrack.getBounds();
+            if (draggedButton.isSpeedUp) {
+                this.speedUp = game.add.sprite(boundariesOfTrack.x, boundariesOfTrack.y, 'accelerator');
+            }
+            if (draggedButton.isSlowDown) {
+                this.slowDown = game.add.sprite(boundariesOfTrack.x, boundariesOfTrack.y, 'decelerator');
+            }
+            draggedButton.onDragStop();
         }
     },
     checkNextLevel: function () {
@@ -222,6 +244,32 @@ level.prototype = {
             tween.start();
         }
     },
+    checkCollisionWithSpeedUp: function () {
+        if (!this.speedUp && !this.slowDown) {
+            return;
+        }
+        function isTrainIntersectingWith(sprite) {
+            var spriteBoundaries = sprite.getBounds();
+            return function (train) {
+                return train.getAllSprites().some(function (trainSegmentSprite) {
+                    var trainSegmentBoundaries = trainSegmentSprite.getBounds();
+                    return Phaser.Rectangle.intersects(spriteBoundaries, trainSegmentBoundaries);
+                })
+            }
+        }
+
+        var trainsToSpeedUp = this.speedUp ? this.trains.filter(isTrainIntersectingWith(this.speedUp)) : [];
+        var trainsToSlowDown = this.slowDown ? this.trains.filter(isTrainIntersectingWith(this.slowDown)) : [];
+        this.trains.forEach(function (train) {
+            train.speedMulti = 1;
+            if (trainsToSpeedUp.indexOf(train) > -1) {
+                train.speedMulti += 1;
+            }
+            if (trainsToSlowDown.indexOf(train) > -1) {
+                train.speedMulti /= 2;
+            }
+        });
+    },
     update: function() {
         //console.log('level.update');
         if (this.keys.esc.isDown) {
@@ -231,10 +279,11 @@ level.prototype = {
         }
 
         if(this.active) {
+            this.checkCollisionWithSpeedUp();
             this.trains.forEach(function (train) {
                 train.move();
             });
-            this.checkCollisions();
+            this.checkTrainCollisions();
             this.checkIsActionButtonOverTrack();
             this.game.world.bringToTop(this.groups.trains);
             this.game.world.bringToTop(this.foreground);
