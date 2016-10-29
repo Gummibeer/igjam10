@@ -77,7 +77,7 @@ Train.prototype = {
     moveSprite: function (sprite, step) {
         sprite.position.x = game.math.catmullRomInterpolation(this.track.coords.x, step);
         sprite.position.y = game.math.catmullRomInterpolation(this.track.coords.y, step);
-        targetAngle = this.track.coords.a[Math.ceil(step * this.track.sprites.length)];
+        var targetAngle = this.track.coords.a[Math.ceil(step * this.track.sprites.length)];
         sprite.rotation = game.math.rotateToAngle(sprite.rotation, targetAngle, game.math.degToRad(90 / level.prototype.grid * this.speed()));
     },
     finish: function () {
