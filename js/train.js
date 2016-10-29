@@ -86,5 +86,7 @@ Train.prototype = {
     },
     onCollide: function () {
         console.log('collision');
+        game.state.clearCurrentState();
+        game.state.start('GameOver');
     }
 };
