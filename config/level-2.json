@@ -4,6 +4,7 @@
     "height": 720
   },
   "backgroundImage": "bg_level_2",
+  "nextLevel": "level-3",
   "trains": [
     {
       "type": "train-empty",
