@@ -8,6 +8,7 @@ level.prototype = {
     trains: [],
     grid: 32,
     groups: {},
+    actionButtons: [],
     background: null,
     foreground: null,
     active: false,
@@ -18,6 +19,7 @@ level.prototype = {
         this.config = {};
         this.keys = {};
         this.trains = [];
+        this.actionButtons = [];
         this.background = null;
         this.foreground = null;
     },
@@ -33,6 +35,7 @@ level.prototype = {
         this.keys.esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 
         this.createTrains();
+        this.createActionButtons();
 
         this.circleBlack = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'circle_black');
         this.circleBlack.anchor.setTo(0.5, 0.5);
@@ -102,6 +105,28 @@ level.prototype = {
             train.waggons.push(waggon);
         }
     },
+    getAllTrackSprites: function () {
+        return this.trains.reduce(function (allTracks, train) {
+            return allTracks.concat(train.track.sprites)
+        }, []);
+    },
+    createActionButtons: function () {
+        var timeAcceleratorButton = new ActionButton({
+            background: 'ui_button_1',
+            speedModifier: 1.5,
+            x: 1085,
+            y: 20
+        });
+        timeAcceleratorButton.init();
+        var timeDeceleratorButton = new ActionButton({
+            background: 'ui_button_2',
+            speedModifier: 0.5,
+            x: 1085,
+            y: 130
+        });
+        timeDeceleratorButton.init();
+        this.actionButtons = [timeAcceleratorButton, timeDeceleratorButton];
+    },
     checkCollisions: function () {
         var trains = this.trains;
 
@@ -129,6 +154,39 @@ level.prototype = {
                     trains[j].onCollide(trains[i]);
                 }
             }
+        }
+    },
+    getDraggedButton: function () {
+        return this.actionButtons.reduce(function (activeButton, button) {
+            if (button.isDragged) {
+                activeButton = button;
+            }
+            return activeButton;
+        });
+    },
+    getTrackSpriteThatIntersectsBoundaries: function (boundaries) {
+        return this.getAllTrackSprites().reduce(function (intersectingTrack, trackSprite) {
+            if (intersectingTrack) {
+                return intersectingTrack;
+            }
+            if (Phaser.Rectangle.intersects(boundaries, trackSprite.getBounds())) {
+                return trackSprite;
+            }
+        }, undefined);
+    },
+    checkIsActionButtonOverTrack: function () {
+        var draggedButton = this.getDraggedButton();
+        if (!draggedButton || !draggedButton.dragSprite._bounds) {
+            return;
+        }
+
+        var buttonBoundaries = draggedButton.dragSprite.getBounds();
+        var intersectingTrack = this.getTrackSpriteThatIntersectsBoundaries(buttonBoundaries);
+
+        if (intersectingTrack) {
+            draggedButton.dragSprite.alpha = 0.7;
+        } else {
+            draggedButton.dragSprite.alpha = 0.2;
         }
     },
     checkNextLevel: function () {
@@ -176,6 +234,7 @@ level.prototype = {
                 train.move();
             });
             this.checkCollisions();
+            this.checkIsActionButtonOverTrack();
             this.checkNextLevel();
         }
     }
