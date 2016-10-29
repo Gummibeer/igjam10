@@ -34,8 +34,8 @@ load.prototype = {
         this.game.load.image('tex_train_body_red', 'img/textures/train_body_red.png');
 
         // UI
-        this.game.load.image('ui_button_1', 'img/ui_button_1.png');
-        this.game.load.image('ui_button_2', 'img/ui_button_2.png');
+        this.game.load.image('btn_slow_down', 'img/btn_slow_down.png');
+        this.game.load.image('btn_speed_up', 'img/btn_speed_up.png');
 
         // Backgrounds
         this.game.load.image('bg_menu', 'img/bg_menu.jpg');

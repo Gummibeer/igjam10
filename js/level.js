@@ -45,6 +45,7 @@ level.prototype = {
         tween.onComplete.add(function() {
             this.active = true;
         }.bind(this));
+        this.game.world.bringToTop(this.groups.trains);
         this.game.world.bringToTop(this.foreground);
         this.game.world.bringToTop(this.circleBlack);
         tween.start();
@@ -198,7 +199,6 @@ level.prototype = {
         });
         var tween = this.game.add.tween(this.circleBlack.scale).to({x:50, y:50}, 1500, Phaser.Easing.Exponential.Out);
         if (allArrived) {
-            this.game.world.bringToTop(this.circleBlack);
             this.active = false;
             var nextLevel = this.config.level.nextLevel;
             if (nextLevel) {
@@ -214,7 +214,6 @@ level.prototype = {
             }
             tween.start();
         } else if(someDestroyed) {
-            this.game.world.bringToTop(this.circleBlack);
             this.active = false;
             tween.onComplete.add(function() {
                 this.game.state.clearCurrentState();
@@ -238,6 +237,8 @@ level.prototype = {
             this.checkCollisions();
             this.checkIsActionButtonOverTrack();
             this.game.world.bringToTop(this.groups.trains);
+            this.game.world.bringToTop(this.foreground);
+            this.game.world.bringToTop(this.circleBlack);
             this.checkNextLevel();
         }
     }
