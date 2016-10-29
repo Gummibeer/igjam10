@@ -15,9 +15,9 @@ load.prototype = {
         this.game.load.json('trains', 'config/trains.json');
         this.game.load.json('level-1', 'config/level-1.json');
 
-        // Objects
-        this.game.load.image('rail_curve', 'img/objects/rail_curve.png');
-        this.game.load.image('rail_normal', 'img/objects/rail_normal.png');
+        // Textures
+        this.game.load.image('tex_rail_curve', 'img/textures/rail_curve.png');
+        this.game.load.image('tex_rail_normal', 'img/textures/rail_normal.png');
     },
     create: function () {
         console.log('load.create');
