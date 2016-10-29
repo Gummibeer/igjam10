@@ -93,15 +93,23 @@ level.prototype = {
             return Phaser.Rectangle.intersects(boundsA, boundsB);
         }
 
+        function checkSpritesForCollision(spritesA, spritesB) {
+            return spritesA.some(function (spriteA) {
+                return spritesB.some(function (spriteB) {
+                    if (isIntersecting(spriteA, spriteB)) {
+                        return true;
+                    }
+                });
+            });
+        }
+
         for (var i = 0; i < trains.length -1; i++) {
             var spritesToCheck = trains[i].getAllSprites();
             for (var j = i+1; j < trains.length; j++) {
-                spritesToCheck.some(function (sprite) {
-                    if (isIntersecting(sprite, trains[j].sprite)) {
-                        trains[i].onCollide(trains[j]);
-                        trains[j].onCollide(trains[i]);
-                    }
-                });
+                if (checkSpritesForCollision(spritesToCheck, trains[j].getAllSprites())) {
+                    trains[i].onCollide(trains[j]);
+                    trains[j].onCollide(trains[i]);
+                }
             }
         }
     },
