@@ -3,7 +3,7 @@
     "width": 1280,
     "height": 720
   },
-  "backgroundImage": "ig10-lvl-2",
+  "backgroundImage": "bg_level_3",
   "trains": [
     {
       "type": "train-empty",

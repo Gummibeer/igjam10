@@ -9,7 +9,7 @@ load.prototype = {
         this.load.setPreloadSprite(loadingBar);
 
         // Menu
-        this.game.load.image('btn-start', 'img/btn-start.png');
+        this.game.load.image('btn_start', 'img/btn_start.png');
 
         // Configs
         this.game.load.json('trains', 'config/trains.json');
@@ -35,7 +35,7 @@ load.prototype = {
         this.game.load.image('tex_train_enchant', 'img/textures/train_enchant.png');
 
         // Backgrounds
-        this.game.load.image('ig10-lvl-2', 'img/IG10-LVL-2.jpg');
+        this.game.load.image('bg_level_2', 'img/bg_level_2.jpg');
     },
     create: function () {
         console.log('load.create');
