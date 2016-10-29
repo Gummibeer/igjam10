@@ -35,6 +35,7 @@ load.prototype = {
         this.game.load.image('tex_train_enchant', 'img/textures/train_enchant.png');
 
         // Backgrounds
+        this.game.load.image('bg_menu', 'img/bg_menu.jpg');
         this.game.load.image('bg_level_2', 'img/bg_level_2.jpg');
     },
     create: function () {
