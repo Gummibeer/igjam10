@@ -25,15 +25,12 @@ load.prototype = {
         this.game.load.image('tex_rail_straight', 'img/textures/rail_straight.png');
         this.game.load.image('tex_rail_crossing', 'img/textures/rail_crossing.png');
 
-
         // Trains
         this.game.load.image('tex_train_empty', 'img/textures/train_empty.png');
         this.game.load.image('tex_train_chest_wood', 'img/textures/train_chest_wood.png');
         this.game.load.image('tex_train_diamond', 'img/textures/train_diamond.png');
         this.game.load.image('tex_train_cake', 'img/textures/train_cake.png');
         this.game.load.image('tex_train_enchant', 'img/textures/train_enchant.png');
-
-
     },
     create: function () {
         console.log('load.create');
