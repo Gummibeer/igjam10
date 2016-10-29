@@ -237,8 +237,8 @@ level.prototype = {
             });
             this.checkCollisions();
             this.checkIsActionButtonOverTrack();
-            this.checkNextLevel();
             this.game.world.bringToTop(this.groups.trains);
+            this.checkNextLevel();
         }
     }
 };
