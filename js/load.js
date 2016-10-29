@@ -16,8 +16,15 @@ load.prototype = {
         this.game.load.json('level-1', 'config/level-1.json');
 
         // Textures
+        this.game.load.image('rail_activator_active', 'img/textures/rail_activator_active.png');
+        this.game.load.image('rail_activator', 'img/textures/rail_activator.png');
         this.game.load.image('tex_rail_curve', 'img/textures/rail_curve.png');
+        this.game.load.image('rail_detector_active', 'img/textures/rail_detector_active.png');
+        this.game.load.image('rail_golden_active', 'img/textures/rail_golden_active.png');
+        this.game.load.image('rail_golden_inactive', 'img/textures/rail_golden_inactive.png');
         this.game.load.image('tex_rail_straight', 'img/textures/rail_straight.png');
+
+
     },
     create: function () {
         console.log('load.create');
