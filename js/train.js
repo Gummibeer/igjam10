@@ -45,9 +45,8 @@ Train.prototype = {
             this.step = Math.min(this.step + (this.speed() * x), 1);
             this.sprite.position.x = game.math.catmullRomInterpolation(this.track.coords.x, this.step);
             this.sprite.position.y = game.math.catmullRomInterpolation(this.track.coords.y, this.step);
-            var angle = game.math.catmullRomInterpolation(this.track.coords.a, this.step);
+            this.sprite.rotation = game.math.catmullRomInterpolation(this.track.coords.a, this.step);
             this.sprite.anchor.setTo(0.5, 0.5);
-            this.sprite.rotation = angle;
             if (this.step == 1) {
                 this.finish();
             }
