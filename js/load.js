@@ -47,6 +47,9 @@ load.prototype = {
         this.game.load.image('fg_level_1', 'img/fg_level_1.png');
         this.game.load.image('fg_level_2', 'img/fg_level_2.png');
         this.game.load.image('fg_level_3', 'img/fg_level_3.png');
+
+        // Images
+        this.game.load.image('circle_black', 'img/circle_black.png');
     },
     create: function () {
         console.log('load.create');
