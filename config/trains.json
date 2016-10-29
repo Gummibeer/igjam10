@@ -1,10 +1,10 @@
 {
   "train-1": {
     "image": "one",
-    "speed": 5
+    "speed": 3
   },
   "train-2": {
     "image": "two",
-    "speed": 6
+    "speed": 3.6
   }
 }
