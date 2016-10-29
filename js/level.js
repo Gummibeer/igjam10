@@ -47,23 +47,8 @@ level.prototype = {
         this.groups.trains.add(train.sprite);
         for (var i = 0; i < data.track.length; i++) {
             var track = data.track[i];
-            var sprite = this.game.add.sprite(track[0] * this.grid, track[1] * this.grid, 'tex_rail_'+track[2]);
-            switch(track[3]) {
-                default:
-                case 0:
-                    sprite.anchor.setTo(0, 0);
-                    break;
-                case 90:
-                    sprite.anchor.setTo(0, 1);
-                    break;
-                case 180:
-                    sprite.anchor.setTo(1, 1);
-                    break;
-                case -90:
-                case 270:
-                    sprite.anchor.setTo(1, 0);
-                    break;
-            }
+            var sprite = this.game.add.sprite(track[0] * this.grid + (this.grid / 2), track[1] * this.grid + (this.grid / 2), 'tex_rail_'+track[2]);
+            sprite.anchor.setTo(0.5, 0.5);
             sprite.angle = track[3];
             train.track.sprites.push(sprite);
             train.track.coords.x.push(sprite.position.x);
