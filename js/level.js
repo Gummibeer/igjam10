@@ -8,19 +8,24 @@ level.prototype = {
     trains: [],
     grid: 32,
     groups: {},
+    background: null,
+    foreground: null,
     init: function (config) {
         console.log('level.init');
         this.name = config;
         this.config = {};
         this.keys = {};
         this.trains = [];
+        this.background = null;
+        this.foreground = null;
     },
     create: function () {
         console.log('level.create');
         this.config.level = this.game.cache.getJSON(this.name);
         this.config.trains = this.game.cache.getJSON('trains');
 
-        this.game.add.image(0, 0, this.config.level.backgroundImage);
+        this.background = this.game.add.image(0, 0, this.config.level.backgroundImage);
+        this.foreground = this.game.add.image(0, 0, this.config.level.foregroundImage);
 
         this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.ESC]);
         this.keys.esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
@@ -35,6 +40,7 @@ level.prototype = {
             this.trains[i] = this.createTrain(data);
         }
         this.game.world.bringToTop(this.groups.trains);
+        this.game.world.bringToTop(this.foreground);
     },
     createTrain: function(data) {
         var train = new Train();
@@ -47,7 +53,7 @@ level.prototype = {
         train.start.y = data.track[data.waggonLength][1] * this.grid;
         train.end.x = data.track[data.track.length - 1][0] * this.grid;
         train.end.y = data.track[data.track.length - 1][1] * this.grid;
-        train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_'+this.config.trains[train.type].image);
+        train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_head_'+this.config.trains[train.type].image);
         train.sprite.anchor.setTo(0.5, 0.5);
         train.sprite.angle = data.startRotation;
         this.groups.trains.add(train.sprite);
@@ -78,7 +84,7 @@ level.prototype = {
                 x: data.track[i][0] * this.grid,
                 y: data.track[i][1] * this.grid
             };
-            waggon.sprite = this.game.add.sprite(startPosition.x, startPosition.y, 'tex_train_'+this.config.trains[data.type].image);
+            waggon.sprite = this.game.add.sprite(startPosition.x, startPosition.y, 'tex_train_body_'+this.config.trains[data.type].image);
             waggon.sprite.anchor.setTo(0.5, 0.5);
             waggon.sprite.angle = data.startRotation;
             train.waggons.push(waggon);

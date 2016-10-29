@@ -28,15 +28,21 @@ load.prototype = {
         this.game.load.image('tex_rail_crossing', 'img/textures/rail_crossing.png');
 
         // Trains
-        this.game.load.image('tex_train_empty', 'img/textures/train_empty.png');
-        this.game.load.image('tex_train_chest_wood', 'img/textures/train_chest_wood.png');
-        this.game.load.image('tex_train_diamond', 'img/textures/train_diamond.png');
-        this.game.load.image('tex_train_cake', 'img/textures/train_cake.png');
-        this.game.load.image('tex_train_enchant', 'img/textures/train_enchant.png');
+        this.game.load.image('tex_train_head_green', 'img/textures/train_head_green.png');
+        this.game.load.image('tex_train_body_green', 'img/textures/train_body_green.png');
+        this.game.load.image('tex_train_head_red', 'img/textures/train_head_red.png');
+        this.game.load.image('tex_train_body_red', 'img/textures/train_body_red.png');
 
         // Backgrounds
         this.game.load.image('bg_menu', 'img/bg_menu.jpg');
+        this.game.load.image('bg_level_1', 'img/bg_level_1.jpg');
         this.game.load.image('bg_level_2', 'img/bg_level_2.jpg');
+        this.game.load.image('bg_level_3', 'img/bg_level_3.jpg');
+
+        // Foregrounds
+        this.game.load.image('fg_level_1', 'img/fg_level_1.png');
+        this.game.load.image('fg_level_2', 'img/fg_level_2.png');
+        this.game.load.image('fg_level_3', 'img/fg_level_3.png');
     },
     create: function () {
         console.log('load.create');

@@ -1,22 +1,10 @@
 {
-  "train-empty": {
-    "image": "empty",
+  "green": {
+    "image": "green",
     "speed": 3
   },
-  "train-chest-wood": {
-    "image": "chest_wood",
+  "red": {
+    "image": "red",
     "speed": 3.6
-  },
-  "train-cake": {
-    "image": "cake",
-    "speed": 2
-  },
-  "train-diamond": {
-    "image": "diamond",
-    "speed": 4
-  },
-  "train-enchant": {
-    "image": "enchant",
-    "speed": 5
   }
 }
