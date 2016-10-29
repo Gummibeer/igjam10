@@ -19,3 +19,9 @@ h5,
 h6 {
     font-family: 'Coiny', cursive;
 }
+
+footer,
+aside {
+    user-select: none;
+    cursor: default;
+}

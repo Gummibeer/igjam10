@@ -5,6 +5,7 @@
   },
   "backgroundImage": "bg_level_1",
   "foregroundImage": "fg_level_1",
+  "nextLevel": "level-2",
   "trains": [
     {
       "type": "green",

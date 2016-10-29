@@ -119,6 +119,20 @@ level.prototype = {
             }
         }
     },
+    checkNextLevel: function () {
+        var switchToNextLevel = this.trains.every(function (train) {
+            return train.arrived;
+        });
+        if (switchToNextLevel) {
+            var nextLevel = this.config.level.nextLevel;
+            this.game.state.clearCurrentState();
+            if (nextLevel) {
+                this.game.state.start('Level', true, false, nextLevel);
+            } else {
+                this.game.state.start('GameWon');
+            }
+        }
+    },
     update: function() {
         //console.log('level.update');
         if (this.keys.esc.isDown) {
@@ -131,5 +145,6 @@ level.prototype = {
             train.move();
         });
         this.checkCollisions();
+        this.checkNextLevel();
     }
 };
