@@ -3,6 +3,7 @@
     "width": 1280,
     "height": 720
   },
+  "backgroundImage": "ig10-lvl-2",
   "trains": [
     {
       "type": "train-1",

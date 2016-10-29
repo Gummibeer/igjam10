@@ -20,6 +20,8 @@ level.prototype = {
         this.config.level = this.game.cache.getJSON(this.name);
         this.config.trains = this.game.cache.getJSON('trains');
 
+        this.game.add.image(0, 0, this.config.level.backgroundImage);
+
         this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.ESC]);
         this.keys.esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 
