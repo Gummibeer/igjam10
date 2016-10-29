@@ -6,6 +6,7 @@
   "trains": [
     {
       "type": "train-empty",
+      "waggonLength": 2,
       "track": [
         [10, 4, "straight", 90],
         [11, 4, "straight", 90],
@@ -56,6 +57,7 @@
     },
     {
       "type": "train-chest-wood",
+      "waggonLength": 3,
       "track": [
         [32, 17, "straight", 90],
         [33, 17, "curve", 180],

@@ -40,17 +40,25 @@ level.prototype = {
         var train = new Train();
         train.init();
         train.type = data.type;
+        this.addWaggons(train, data);
+        train.waggonLength = data.waggonLength;
         train.baseSpeed = this.config.trains[train.type].speed;
-        train.start.x = data.track[0][0] * this.grid;
-        train.start.y = data.track[0][1] * this.grid;
+        train.start.x = data.track[train.waggonLength][0] * this.grid;
+        train.start.y = data.track[train.waggonLength][1] * this.grid;
         train.end.x = data.track[data.track.length - 1][0] * this.grid;
         train.end.y = data.track[data.track.length - 1][1] * this.grid;
         train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_'+this.config.trains[train.type].image);
+
         train.sprite.anchor.setTo(0.5, 0.5);
-        this.game.physics.arcade.enable([train.sprite]);
+        this.game.physics.arcade.enable([train.sprite].concat(train.waggons.map(function (waggon) {
+            return waggon.sprite;
+        })));
         train.sprite.body.onCollide = new Phaser.Signal();
         train.sprite.body.onCollide.add(train.onCollide);
         this.groups.trains.add(train.sprite);
+        train.waggons.forEach(function (waggon) {
+            this.groups.trains.add(waggon.sprite);
+        }.bind(this));
         for (var i = 0; i < data.track.length; i++) {
             var track = data.track[i];
             var sprite = this.game.add.sprite(track[0] * this.grid + (this.grid / 2), track[1] * this.grid + (this.grid / 2), 'tex_rail_'+track[2]);
@@ -66,6 +74,18 @@ level.prototype = {
             }
         }
         return train;
+    },
+    addWaggons: function (train, data) {
+        for (var i = data.waggonLength - 1; i >= 0; i--) {
+            var waggon = new TrainWaggon();
+            var startPosition = {
+                x: data.track[data.waggonLength - i][0] * this.grid,
+                y: data.track[data.waggonLength - i][1] * this.grid
+            };
+            waggon.sprite = this.game.add.sprite(startPosition.x, startPosition.y, 'tex_train_'+this.config.trains[data.type].image);
+            waggon.sprite.anchor.setTo(0.5, 0.5);
+            train.waggons.push(waggon);
+        }
     },
     update: function() {
         //console.log('level.update');
@@ -84,6 +104,9 @@ level.prototype = {
     render: function() {
         this.trains.forEach(function(train) {
             this.game.debug.body(train.sprite);
+            train.waggons.forEach(function (waggon) {
+                this.game.debug.body(waggon.sprite);
+            }.bind(this))
         });
     }
 };
