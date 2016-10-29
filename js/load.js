@@ -15,7 +15,7 @@ load.prototype = {
         this.game.load.json('trains', 'config/trains.json');
         this.game.load.json('level-1', 'config/level-1.json');
 
-        // Textures
+        // Rails
         this.game.load.image('rail_activator_active', 'img/textures/rail_activator_active.png');
         this.game.load.image('rail_activator', 'img/textures/rail_activator.png');
         this.game.load.image('tex_rail_curve', 'img/textures/rail_curve.png');
@@ -26,9 +26,12 @@ load.prototype = {
         this.game.load.image('tex_rail_crossing', 'img/textures/rail_crossing.png');
 
 
-        //Textures Trains
-        this.game.load.image('tex_train_one', 'img/textures/train_one.png');
-        this.game.load.image('tex_train_two', 'img/textures/train_two.png');
+        // Trains
+        this.game.load.image('tex_train_empty', 'img/textures/train_empty.png');
+        this.game.load.image('tex_train_chest_wood', 'img/textures/train_chest_wood.png');
+        this.game.load.image('tex_train_diamond', 'img/textures/train_diamond.png');
+        this.game.load.image('tex_train_cake', 'img/textures/train_cake.png');
+        this.game.load.image('tex_train_enchant', 'img/textures/train_enchant.png');
 
 
     },

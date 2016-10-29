@@ -5,8 +5,7 @@
   },
   "trains": [
     {
-      "type": "train-1",
-
+      "type": "train-empty",
       "track": [
         [10, 4, "straight", 90],
         [11, 4, "straight", 90],
@@ -53,13 +52,10 @@
         [9, 5, "straight", 180],
         [9, 4, "curve", 0],
         [10, 4, "straight", 90]
-
       ]
     },
-
     {
-      "type": "train-2",
-
+      "type": "train-chest-wood",
       "track": [
         [32, 17, "straight", 90],
         [33, 17, "curve", 180],
@@ -108,8 +104,6 @@
         [30, 17, "straight", 90],
         [31, 17, "straight", 90],
         [32, 17, "straight", 90]
-
-
       ]
     }
   ]
