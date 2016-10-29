@@ -84,6 +84,27 @@ level.prototype = {
             train.waggons.push(waggon);
         }
     },
+    checkCollisions: function () {
+        var trains = this.trains;
+
+        function isIntersecting(spriteA, spriteB) {
+            var boundsA = spriteA.getBounds();
+            var boundsB = spriteB.getBounds();
+            return Phaser.Rectangle.intersects(boundsA, boundsB);
+        }
+
+        for (var i = 0; i < trains.length -1; i++) {
+            var spritesToCheck = trains[i].getAllSprites();
+            for (var j = i+1; j < trains.length; j++) {
+                spritesToCheck.some(function (sprite) {
+                    if (isIntersecting(sprite, trains[j].sprite)) {
+                        trains[i].onCollide(trains[j]);
+                        trains[j].onCollide(trains[i]);
+                    }
+                });
+            }
+        }
+    },
     update: function() {
         //console.log('level.update');
         if (this.keys.esc.isDown) {
@@ -95,5 +116,6 @@ level.prototype = {
         this.trains.forEach(function(train) {
             train.move();
         });
+        this.checkCollisions();
     }
 };
