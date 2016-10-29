@@ -28,7 +28,8 @@ Train.prototype = {
             sprites: [],
             coords: {
                 x: [],
-                y: []
+                y: [],
+                a: []
             }
         };
         this.start = {};
@@ -42,8 +43,11 @@ Train.prototype = {
         if(!this.arrived) {
             var x = 1 / (this.track.sprites.length * level.prototype.grid);
             this.step = Math.min(this.step + (this.speed() * x), 1);
-            this.sprite.position.x = game.math.catmullRomInterpolation(this.track.coords.x, this.step);
-            this.sprite.position.y = game.math.catmullRomInterpolation(this.track.coords.y, this.step);
+            this.sprite.position.x = game.math.catmullRomInterpolation(this.track.coords.x, this.step) + (level.prototype.grid / 2);
+            this.sprite.position.y = game.math.catmullRomInterpolation(this.track.coords.y, this.step) + (level.prototype.grid / 2);
+            var angle = game.math.catmullRomInterpolation(this.track.coords.a, this.step);
+            this.sprite.anchor.setTo(0.5, 0.5);
+            this.sprite.rotation = angle;
             if (this.step == 1) {
                 this.finish();
             }

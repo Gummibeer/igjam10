@@ -68,6 +68,11 @@ level.prototype = {
             train.track.sprites.push(sprite);
             train.track.coords.x.push(sprite.position.x);
             train.track.coords.y.push(sprite.position.y);
+            if(i > 0) {
+                train.track.coords.a.push(this.game.math.angleBetweenPoints(train.track.sprites[train.track.sprites.length - 2], sprite.position));
+            } else {
+                train.track.coords.a.push(0);
+            }
         }
         return train;
     },
