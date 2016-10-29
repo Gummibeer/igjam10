@@ -43,8 +43,8 @@ level.prototype = {
         this.addWaggons(train, data);
         train.waggonLength = data.waggonLength;
         train.baseSpeed = this.config.trains[train.type].speed;
-        train.start.x = data.track[train.waggonLength][0] * this.grid;
-        train.start.y = data.track[train.waggonLength][1] * this.grid;
+        train.start.x = data.track[0][0] * this.grid;
+        train.start.y = data.track[0][1] * this.grid;
         train.end.x = data.track[data.track.length - 1][0] * this.grid;
         train.end.y = data.track[data.track.length - 1][1] * this.grid;
         train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_'+this.config.trains[train.type].image);
@@ -79,8 +79,8 @@ level.prototype = {
         for (var i = data.waggonLength - 1; i >= 0; i--) {
             var waggon = new TrainWaggon();
             var startPosition = {
-                x: data.track[data.waggonLength - i][0] * this.grid,
-                y: data.track[data.waggonLength - i][1] * this.grid
+                x: data.track[i][0] * this.grid,
+                y: data.track[i][1] * this.grid
             };
             waggon.sprite = this.game.add.sprite(startPosition.x, startPosition.y, 'tex_train_'+this.config.trains[data.type].image);
             waggon.sprite.anchor.setTo(0.5, 0.5);
