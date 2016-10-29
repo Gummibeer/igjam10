@@ -1,3 +1,4 @@
+var pixelOffsetBetweenTrainSegments = 5;
 var Train = function () {
 
 };
@@ -47,7 +48,8 @@ Train.prototype = {
             this.step = Math.min(this.step + (this.speed() * x), 1);
             this.moveSprite(this.sprite, this.step);
             this.waggons.forEach(function (waggon, i) {
-                var waggonStep = Math.max(0, Math.min(this.step - (x * grid * (i + 1)), 1));
+                var extraDistanceBetween = (i+1) * pixelOffsetBetweenTrainSegments;
+                var waggonStep = Math.max(0, Math.min(this.step - (x * (grid * (i + 1) + extraDistanceBetween)), 1));
                 this.moveSprite(waggon.sprite, waggonStep);
             }.bind(this));
             if (this.step == 1) {
