@@ -41,11 +41,11 @@ Train.prototype = {
     speed: function () {
         return this.baseSpeed * this.speedMulti;
     },
-    pathStepIndex: function() {
+    pathStepIndex: function () {
         return 1 / (this.track.sprites.length * level.prototype.grid);
     },
-    incStep: function(times) {
-        if(times > 0) {
+    incStep: function (times) {
+        if (times > 0) {
             times = times * level.prototype.grid / this.speed();
         } else {
             times = 1;
