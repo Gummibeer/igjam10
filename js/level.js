@@ -10,6 +10,8 @@ level.prototype = {
     groups: {},
     background: null,
     foreground: null,
+    active: false,
+    circleBlack: null,
     init: function (config) {
         console.log('level.init');
         this.name = config;
@@ -31,6 +33,16 @@ level.prototype = {
         this.keys.esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 
         this.createTrains();
+
+        this.circleBlack = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'circle_black');
+        this.circleBlack.anchor.setTo(0.5, 0.5);
+        this.circleBlack.scale.x = 50;
+        this.circleBlack.scale.y = 50;
+        var tween = this.game.add.tween(this.circleBlack.scale).to({x:0, y:0}, 1500, Phaser.Easing.Exponential.Out);
+        tween.onComplete.add(function() {
+            this.active = true;
+        }.bind(this));
+        tween.start();
     },
     createTrains: function () {
         this.groups.trains = this.game.add.group();
@@ -46,20 +58,6 @@ level.prototype = {
         var train = new Train();
         train.init();
         train.type = data.type;
-        this.addWaggons(train, data);
-        train.waggonLength = data.waggonLength;
-        train.baseSpeed = this.config.trains[train.type].speed;
-        train.start.x = data.track[data.waggonLength][0] * this.grid;
-        train.start.y = data.track[data.waggonLength][1] * this.grid;
-        train.end.x = data.track[data.track.length - 1][0] * this.grid;
-        train.end.y = data.track[data.track.length - 1][1] * this.grid;
-        train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_head_'+this.config.trains[train.type].image);
-        train.sprite.anchor.setTo(0.5, 0.5);
-        train.sprite.angle = data.startRotation;
-        this.groups.trains.add(train.sprite);
-        train.waggons.forEach(function (waggon) {
-            this.groups.trains.add(waggon.sprite);
-        }.bind(this));
         for (var i = 0; i < data.track.length; i++) {
             var track = data.track[i];
             var sprite = this.game.add.sprite(track[0] * this.grid + (this.grid / 2), track[1] * this.grid + (this.grid / 2), 'tex_rail_'+track[2]);
@@ -74,6 +72,20 @@ level.prototype = {
                 train.track.coords.a.push(this.game.math.degToRad(data.startRotation));
             }
         }
+        this.addWaggons(train, data);
+        train.waggonLength = data.waggonLength;
+        train.baseSpeed = this.config.trains[train.type].speed;
+        train.start.x = train.track.coords.x[data.waggonLength];
+        train.start.y = train.track.coords.y[data.waggonLength];
+        train.end.x = train.track.coords.x[data.track.length - 1];
+        train.end.y = train.track.coords.y[data.track.length - 1];
+        train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_head_'+this.config.trains[train.type].image);
+        train.sprite.anchor.setTo(0.5, 0.5);
+        train.sprite.angle = data.startRotation;
+        this.groups.trains.add(train.sprite);
+        train.waggons.forEach(function (waggon) {
+            this.groups.trains.add(waggon.sprite);
+        }.bind(this));
         train.incStep(train.waggonLength);
         return train;
     },
@@ -81,8 +93,8 @@ level.prototype = {
         for (var i = 0; i < data.waggonLength; i++) {
             var waggon = new TrainWaggon();
             var startPosition = {
-                x: data.track[i][0] * this.grid,
-                y: data.track[i][1] * this.grid
+                x: data.track[i][0] * this.grid + (this.grid / 2),
+                y: data.track[i][1] * this.grid + (this.grid / 2)
             };
             waggon.sprite = this.game.add.sprite(startPosition.x, startPosition.y, 'tex_train_body_'+this.config.trains[data.type].image);
             waggon.sprite.anchor.setTo(0.5, 0.5);
@@ -120,17 +132,35 @@ level.prototype = {
         }
     },
     checkNextLevel: function () {
-        var switchToNextLevel = this.trains.every(function (train) {
+        var allArrived = this.trains.every(function (train) {
             return train.arrived;
         });
-        if (switchToNextLevel) {
+        var someDestroyed = this.trains.some(function (train) {
+            return train.destroyed;
+        });
+        var tween = this.game.add.tween(this.circleBlack.scale).to({x:50, y:50}, 1500, Phaser.Easing.Exponential.Out);
+        if (allArrived) {
+            this.active = false;
             var nextLevel = this.config.level.nextLevel;
-            this.game.state.clearCurrentState();
             if (nextLevel) {
-                this.game.state.start('Level', true, false, nextLevel);
+                tween.onComplete.add(function() {
+                    this.game.state.clearCurrentState();
+                    this.game.state.start('Level', true, false, nextLevel);
+                }.bind(this));
             } else {
-                this.game.state.start('GameWon');
+                tween.onComplete.add(function() {
+                    this.game.state.clearCurrentState();
+                    this.game.state.start('GameWon');
+                }.bind(this));
             }
+            tween.start();
+        } else if(someDestroyed) {
+            this.active = false;
+            tween.onComplete.add(function() {
+                this.game.state.clearCurrentState();
+                this.game.state.start('GameOver');
+            }.bind(this));
+            tween.start();
         }
     },
     update: function() {
@@ -141,10 +171,12 @@ level.prototype = {
             return true;
         }
 
-        this.trains.forEach(function(train) {
-            train.move();
-        });
-        this.checkCollisions();
-        this.checkNextLevel();
+        if(this.active) {
+            this.trains.forEach(function (train) {
+                train.move();
+            });
+            this.checkCollisions();
+            this.checkNextLevel();
+        }
     }
 };

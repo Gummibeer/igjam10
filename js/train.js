@@ -18,6 +18,7 @@ Train.prototype = {
     end: {},
     step: 0,
     arrived: false,
+    destroyed: false,
     init: function () {
         console.log('train.init');
         this.sprite = null;
@@ -36,6 +37,7 @@ Train.prototype = {
         this.end = {};
         this.step = 0;
         this.waggons = [];
+        this.destroyed = false;
     },
     speed: function () {
         return this.baseSpeed * this.speedMulti;
@@ -84,8 +86,7 @@ Train.prototype = {
         console.log('arrived', this);
     },
     onCollide: function () {
-        console.log('collision');
-        game.state.clearCurrentState();
-        game.state.start('GameOver');
+        this.destroyed = true;
+        console.log('collision', this);
     }
 };
