@@ -46,7 +46,7 @@ Train.prototype = {
     },
     incStep: function(times) {
         if(times > 0) {
-            times = times * level.prototype.grid;
+            times = times * level.prototype.grid / this.speed();
         } else {
             times = 1;
         }
