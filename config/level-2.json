@@ -6,7 +6,9 @@
   "backgroundImage": "ig10-lvl-2",
   "trains": [
     {
-      "type": "train-1",
+      "type": "train-empty",
+      "waggonLength": 2,
+      "startRotation": 0,
       "track": [
         [0, 1, "straight", 90],
         [1, 1, "straight", 90],
@@ -57,7 +59,9 @@
     },
 
     {
-      "type": "train-2",
+      "type": "train-cake",
+      "waggonLength": 2,
+      "startRotation": 0,
       "track": [
         [0, 20, "straight", 90],
         [1, 20, "straight", 90],
