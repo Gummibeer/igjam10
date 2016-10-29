@@ -117,13 +117,20 @@ level.prototype = {
         }, []);
     },
     createActionButtons: function () {
+        var self = this;
         this.groups.ui = this.game.add.group();
 
         var timeAcceleratorButton = new ActionButton({
             background: 'btn_speed_up',
             isSpeedUp: true,
             x: 1085,
-            y: 20
+            y: 20,
+            handleDropStop: function () {
+                var hoveredTrack = this.hoveredTrack;
+                if (hoveredTrack) {
+                    self.speedUp = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'accelerator');
+                }
+            }
         });
         timeAcceleratorButton.init();
         this.groups.ui.add(timeAcceleratorButton.backgroundSprite);
@@ -132,7 +139,13 @@ level.prototype = {
             background: 'btn_slow_down',
             isSlowDown: true,
             x: 1085,
-            y: 130
+            y: 130,
+            handleDropStop: function () {
+                var hoveredTrack = this.hoveredTrack;
+                if (hoveredTrack) {
+                    self.slowDown = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'decelerator');
+                }
+            }
         });
         timeDeceleratorButton.init();
         this.groups.ui.add(timeDeceleratorButton.backgroundSprite);
@@ -170,7 +183,7 @@ level.prototype = {
     },
     getDraggedButton: function () {
         return this.actionButtons.reduce(function (activeButton, button) {
-            if (button.isDragged) {
+            if (button.isDragging) {
                 activeButton = button;
             }
             return activeButton;
@@ -191,6 +204,7 @@ level.prototype = {
         if (!draggedButton || !draggedButton.dragSprite._bounds) {
             return;
         }
+        draggedButton.hoveredTrack = null;
         if (draggedButton.isSlowDown && this.slowDown) {
             return;
         }
@@ -202,15 +216,18 @@ level.prototype = {
         var intersectingTrack = this.getTrackSpriteThatIntersectsBoundaries(buttonBoundaries);
 
         if (intersectingTrack) {
-            var boundariesOfTrack = intersectingTrack.getBounds();
-            if (draggedButton.isSpeedUp) {
-                this.speedUp = game.add.sprite(boundariesOfTrack.x, boundariesOfTrack.y, 'accelerator');
-            }
-            if (draggedButton.isSlowDown) {
-                this.slowDown = game.add.sprite(boundariesOfTrack.x, boundariesOfTrack.y, 'decelerator');
-            }
-            draggedButton.onDragStop();
+            draggedButton.hoveredTrack = intersectingTrack;
         }
+    },
+    placePowerUp: function () {
+        var boundariesOfTrack = intersectingTrack.getBounds();
+        if (draggedButton.isSpeedUp) {
+            this.speedUp = game.add.sprite(boundariesOfTrack.x, boundariesOfTrack.y, 'accelerator');
+        }
+        if (draggedButton.isSlowDown) {
+            this.slowDown = game.add.sprite(boundariesOfTrack.x, boundariesOfTrack.y, 'decelerator');
+        }
+        draggedButton.onDragStop();
     },
     checkNextLevel: function () {
         var allArrived = this.trains.every(function (train) {
