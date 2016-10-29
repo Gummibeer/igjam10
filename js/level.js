@@ -46,6 +46,7 @@ level.prototype = {
         train.end.x = data.track[data.track.length - 1][0] * this.grid;
         train.end.y = data.track[data.track.length - 1][1] * this.grid;
         train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_'+this.config.trains[train.type].image);
+        train.sprite.anchor.setTo(0.5, 0.5);
         this.game.physics.arcade.enable([train.sprite]);
         train.sprite.body.onCollide = new Phaser.Signal();
         train.sprite.body.onCollide.add(train.onCollide);
