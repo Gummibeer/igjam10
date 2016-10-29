@@ -46,17 +46,29 @@ Train.prototype = {
             var grid = level.prototype.grid;
             var x = 1 / (this.track.sprites.length * grid);
             this.step = Math.min(this.step + (this.speed() * x), 1);
-            this.moveSprite(this.sprite, this.step);
-            this.waggons.forEach(function (waggon, i) {
-                var extraDistanceBetween = (i+1) * pixelOffsetBetweenTrainSegments;
-                var waggonStep = Math.max(0, Math.min(this.step - (x * (grid * (i + 1) + extraDistanceBetween)), 1));
-                this.moveSprite(waggon.sprite, waggonStep);
-            }.bind(this));
+
+            this.moveAllSprites(x, this.step, pixelOffsetBetweenTrainSegments)
             if (this.step == 1) {
                 this.finish();
             }
         }
     },
+
+    getAllSprites: function () {
+        return this.waggons.reduce(function (allSprites, waggon) {
+            return allSprites.concat(waggon.sprite);
+        }, [this.sprite]);
+    },
+
+    moveAllSprites: function (x, initialStep, offsetBetweenSegments) {
+        var grid = level.prototype.grid;
+        this.getAllSprites().forEach(function (sprite, index) {
+            var extraDistanceBetween = index * offsetBetweenSegments;
+            var step = Math.max(0, Math.min(initialStep + (x * (grid * index + extraDistanceBetween)), 1));
+            this.moveSprite(sprite, step);
+        }.bind(this));
+    },
+
     moveSprite: function (sprite, step) {
         sprite.position.x = game.math.catmullRomInterpolation(this.track.coords.x, step);
         sprite.position.y = game.math.catmullRomInterpolation(this.track.coords.y, step);
