@@ -42,24 +42,21 @@ Train.prototype = {
         return this.baseSpeed * this.speedMulti;
     },
     move: function () {
-        if(!this.arrived) {
+        if (!this.arrived) {
             var grid = level.prototype.grid;
             var x = 1 / (this.track.sprites.length * grid);
             this.step = Math.min(this.step + (this.speed() * x), 1);
-
             this.moveAllSprites(x, this.step, pixelOffsetBetweenTrainSegments)
             if (this.step == 1) {
                 this.finish();
             }
         }
     },
-
     getAllSprites: function () {
         return this.waggons.reduce(function (allSprites, waggon) {
             return allSprites.concat(waggon.sprite);
         }, [this.sprite]);
     },
-
     moveAllSprites: function (x, initialStep, offsetBetweenSegments) {
         var grid = level.prototype.grid;
         this.getAllSprites().forEach(function (sprite, index) {
@@ -68,17 +65,17 @@ Train.prototype = {
             this.moveSprite(sprite, step);
         }.bind(this));
     },
-
     moveSprite: function (sprite, step) {
         sprite.position.x = game.math.catmullRomInterpolation(this.track.coords.x, step);
         sprite.position.y = game.math.catmullRomInterpolation(this.track.coords.y, step);
-        sprite.rotation = game.math.catmullRomInterpolation(this.track.coords.a, step);
+        targetAngle = this.track.coords.a[Math.ceil(step * this.track.sprites.length)];
+        sprite.rotation = game.math.rotateToAngle(sprite.rotation, targetAngle, game.math.degToRad(90 / level.prototype.grid * this.speed()));
     },
-    finish: function() {
+    finish: function () {
         this.arrived = true;
         console.log('arrived', this);
     },
-    onCollide: function(sprite1, sprite2) {
-        console.log(sprite1, sprite2);
+    onCollide: function () {
+        console.log('collision');
     }
 };

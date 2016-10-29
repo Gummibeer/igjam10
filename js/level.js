@@ -17,8 +17,6 @@ level.prototype = {
     },
     create: function () {
         console.log('level.create');
-        this.game.physics.startSystem(Phaser.Physics.ARCADE);
-
         this.config.level = this.game.cache.getJSON(this.name);
         this.config.trains = this.game.cache.getJSON('trains');
 
@@ -48,13 +46,7 @@ level.prototype = {
         train.end.x = data.track[data.track.length - 1][0] * this.grid;
         train.end.y = data.track[data.track.length - 1][1] * this.grid;
         train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_'+this.config.trains[train.type].image);
-
         train.sprite.anchor.setTo(0.5, 0.5);
-        this.game.physics.arcade.enable([train.sprite].concat(train.waggons.map(function (waggon) {
-            return waggon.sprite;
-        })));
-        train.sprite.body.onCollide = new Phaser.Signal();
-        train.sprite.body.onCollide.add(train.onCollide);
         this.groups.trains.add(train.sprite);
         train.waggons.forEach(function (waggon) {
             this.groups.trains.add(waggon.sprite);
@@ -67,7 +59,7 @@ level.prototype = {
             train.track.sprites.push(sprite);
             train.track.coords.x.push(sprite.position.x);
             train.track.coords.y.push(sprite.position.y);
-            if(i > 0) {
+            if(i > 1) {
                 train.track.coords.a.push(this.game.math.angleBetweenPoints(train.track.sprites[train.track.sprites.length - 2], sprite.position));
             } else {
                 train.track.coords.a.push(0);
@@ -95,18 +87,8 @@ level.prototype = {
             return true;
         }
 
-        this.game.physics.arcade.collide(this.groups.trains);
-
         this.trains.forEach(function(train) {
             train.move();
-        });
-    },
-    render: function() {
-        this.trains.forEach(function(train) {
-            this.game.debug.body(train.sprite);
-            train.waggons.forEach(function (waggon) {
-                this.game.debug.body(waggon.sprite);
-            }.bind(this))
         });
     }
 };

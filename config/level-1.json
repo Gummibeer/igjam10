@@ -6,7 +6,7 @@
   "trains": [
     {
       "type": "train-empty",
-      "waggonLength": 0,
+      "waggonLength": 2,
       "track": [
         [6, 2, "straight", 180],
         [6, 3, "straight", 180],
@@ -57,12 +57,11 @@
         [21, 19, "straight", 90],
         [20, 19, "straight", 90],
         [19, 19, "straight", 90]
-
       ]
     },
     {
       "type": "train-chest-wood",
-      "waggonLength": 0,
+      "waggonLength": 2,
       "track": [
         [17, 10, "straight", 180],
         [17, 11, "straight", 180],
@@ -102,16 +101,11 @@
         [32, 4, "straight", 180],
         [32, 3, "straight", 180],
         [32, 2, "straight", 180]
-
-
-
-
-
       ]
     },
     {
       "type": "train-chest-wood",
-      "waggonLength": 0,
+      "waggonLength": 2,
       "track": [
         [9, 2, "straight", 180],
         [9, 3, "straight", 180],
@@ -146,14 +140,6 @@
         [34, 7, "straight", 90],
         [35, 7, "straight", 90],
         [36, 7, "straight", 90]
-
-
-
-
-
-
-
-
       ]
     }
   ]
