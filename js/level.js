@@ -41,12 +41,13 @@ level.prototype = {
         this.addWaggons(train, data);
         train.waggonLength = data.waggonLength;
         train.baseSpeed = this.config.trains[train.type].speed;
-        train.start.x = data.track[0][0] * this.grid;
-        train.start.y = data.track[0][1] * this.grid;
+        train.start.x = data.track[data.waggonLength][0] * this.grid;
+        train.start.y = data.track[data.waggonLength][1] * this.grid;
         train.end.x = data.track[data.track.length - 1][0] * this.grid;
         train.end.y = data.track[data.track.length - 1][1] * this.grid;
         train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_'+this.config.trains[train.type].image);
         train.sprite.anchor.setTo(0.5, 0.5);
+        train.sprite.angle = data.startRotation;
         this.groups.trains.add(train.sprite);
         train.waggons.forEach(function (waggon) {
             this.groups.trains.add(waggon.sprite);
@@ -62,13 +63,14 @@ level.prototype = {
             if(i > 1) {
                 train.track.coords.a.push(this.game.math.angleBetweenPoints(train.track.sprites[train.track.sprites.length - 2], sprite.position));
             } else {
-                train.track.coords.a.push(0);
+                train.track.coords.a.push(this.game.math.degToRad(data.startRotation));
             }
         }
+        train.incStep(train.waggonLength);
         return train;
     },
     addWaggons: function (train, data) {
-        for (var i = data.waggonLength - 1; i >= 0; i--) {
+        for (var i = 0; i < data.waggonLength; i++) {
             var waggon = new TrainWaggon();
             var startPosition = {
                 x: data.track[i][0] * this.grid,
@@ -76,6 +78,7 @@ level.prototype = {
             };
             waggon.sprite = this.game.add.sprite(startPosition.x, startPosition.y, 'tex_train_'+this.config.trains[data.type].image);
             waggon.sprite.anchor.setTo(0.5, 0.5);
+            waggon.sprite.angle = data.startRotation;
             train.waggons.push(waggon);
         }
     },

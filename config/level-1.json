@@ -7,6 +7,7 @@
     {
       "type": "train-empty",
       "waggonLength": 2,
+      "startRotation": 90,
       "track": [
         [6, 2, "straight", 180],
         [6, 3, "straight", 180],
@@ -62,6 +63,7 @@
     {
       "type": "train-chest-wood",
       "waggonLength": 2,
+      "startRotation": 90,
       "track": [
         [17, 10, "straight", 180],
         [17, 11, "straight", 180],
@@ -106,6 +108,7 @@
     {
       "type": "train-chest-wood",
       "waggonLength": 2,
+      "startRotation": 90,
       "track": [
         [9, 2, "straight", 180],
         [9, 3, "straight", 180],

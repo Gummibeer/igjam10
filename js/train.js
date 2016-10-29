@@ -41,12 +41,21 @@ Train.prototype = {
     speed: function () {
         return this.baseSpeed * this.speedMulti;
     },
+    pathStepIndex: function() {
+        return 1 / (this.track.sprites.length * level.prototype.grid);
+    },
+    incStep: function(times) {
+        if(times > 0) {
+            times = times * level.prototype.grid;
+        } else {
+            times = 1;
+        }
+        this.step = Math.min(this.step + (this.speed() * this.pathStepIndex() * times), 1);
+    },
     move: function () {
         if (!this.arrived) {
-            var grid = level.prototype.grid;
-            var x = 1 / (this.track.sprites.length * grid);
-            this.step = Math.min(this.step + (this.speed() * x), 1);
-            this.moveAllSprites(x, this.step, pixelOffsetBetweenTrainSegments)
+            this.incStep(0);
+            this.moveAllSprites(this.pathStepIndex(), this.step, pixelOffsetBetweenTrainSegments);
             if (this.step == 1) {
                 this.finish();
             }
@@ -61,7 +70,7 @@ Train.prototype = {
         var grid = level.prototype.grid;
         this.getAllSprites().forEach(function (sprite, index) {
             var extraDistanceBetween = index * offsetBetweenSegments;
-            var step = Math.max(0, Math.min(initialStep + (x * (grid * index + extraDistanceBetween)), 1));
+            var step = Math.max(0, Math.min(initialStep - (x * (grid * index + extraDistanceBetween)), 1));
             this.moveSprite(sprite, step);
         }.bind(this));
     },
