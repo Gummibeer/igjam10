@@ -56,7 +56,6 @@ level.prototype = {
             data = this.config.level.trains[i];
             this.trains[i] = this.createTrain(data);
         }
-        this.game.world.bringToTop(this.groups.trains);
     },
     createTrain: function(data) {
         var train = new Train();
@@ -239,6 +238,7 @@ level.prototype = {
             this.checkCollisions();
             this.checkIsActionButtonOverTrack();
             this.checkNextLevel();
+            this.game.world.bringToTop(this.groups.trains);
         }
     }
 };
