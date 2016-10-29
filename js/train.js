@@ -1,4 +1,3 @@
-var pixelOffsetBetweenTrainSegments = 5;
 var Train = function () {
 
 };
@@ -55,7 +54,7 @@ Train.prototype = {
     move: function () {
         if (!this.arrived) {
             this.incStep(0);
-            this.moveAllSprites(this.pathStepIndex(), this.step, pixelOffsetBetweenTrainSegments);
+            this.moveAllSprites(this.pathStepIndex(), this.step, 0);
             if (this.step == 1) {
                 this.finish();
             }
