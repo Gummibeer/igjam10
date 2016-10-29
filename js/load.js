@@ -17,7 +17,7 @@ load.prototype = {
 
         // Textures
         this.game.load.image('tex_rail_curve', 'img/textures/rail_curve.png');
-        this.game.load.image('tex_rail_normal', 'img/textures/rail_normal.png');
+        this.game.load.image('tex_rail_straight', 'img/textures/rail_straight.png');
     },
     create: function () {
         console.log('load.create');
