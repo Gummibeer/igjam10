@@ -17,6 +17,8 @@ level.prototype = {
     },
     create: function () {
         console.log('level.create');
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
         this.config.level = this.game.cache.getJSON(this.name);
         this.config.trains = this.game.cache.getJSON('trains');
 
@@ -44,6 +46,9 @@ level.prototype = {
         train.end.x = data.track[data.track.length - 1][0] * this.grid;
         train.end.y = data.track[data.track.length - 1][1] * this.grid;
         train.sprite = this.game.add.sprite(train.start.x, train.start.y, 'tex_train_'+this.config.trains[train.type].image);
+        this.game.physics.arcade.enable([train.sprite]);
+        train.sprite.body.onCollide = new Phaser.Signal();
+        train.sprite.body.onCollide.add(train.onCollide);
         this.groups.trains.add(train.sprite);
         for (var i = 0; i < data.track.length; i++) {
             var track = data.track[i];
@@ -69,8 +74,15 @@ level.prototype = {
             return true;
         }
 
+        this.game.physics.arcade.collide(this.groups.trains);
+
         this.trains.forEach(function(train) {
             train.move();
+        });
+    },
+    render: function() {
+        this.trains.forEach(function(train) {
+            this.game.debug.body(train.sprite);
         });
     }
 };

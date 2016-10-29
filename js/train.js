@@ -56,5 +56,8 @@ Train.prototype = {
     finish: function() {
         this.arrived = true;
         console.log('arrived', this);
+    },
+    onCollide: function(sprite1, sprite2) {
+        console.log(sprite1, sprite2);
     }
 };
