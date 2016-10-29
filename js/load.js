@@ -23,6 +23,10 @@ load.prototype = {
         this.game.load.image('rail_golden_active', 'img/textures/rail_golden_active.png');
         this.game.load.image('rail_golden_inactive', 'img/textures/rail_golden_inactive.png');
         this.game.load.image('tex_rail_straight', 'img/textures/rail_straight.png');
+        this.game.load.image('tex_rail_crossing', 'img/textures/rail_crossing.png');
+
+
+        //Textures Trains
         this.game.load.image('tex_train_one', 'img/textures/train_one.png');
 
 
