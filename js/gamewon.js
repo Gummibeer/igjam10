@@ -16,13 +16,15 @@ gamewon.prototype = {
         //console.log('gamewon.update');
 
         function onInput() {
-            game.input.keyboard.onDownCallback = null;
-            game.input.onDown.removeAll();
             game.state.clearCurrentState();
             game.state.start('Menu');
         }
 
         this.game.input.keyboard.onDownCallback = onInput;
         this.game.input.onDown.add(onInput);
+    },
+    shutdown: function() {
+        this.game.input.keyboard.onDownCallback = null;
+        this.game.input.onDown.removeAll();
     }
 };
