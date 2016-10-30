@@ -15,6 +15,7 @@ level.prototype = {
     circleBlack: null,
     speedUp: null,
     slowDown: null,
+    music: null,
     init: function (config) {
         console.log('level.init');
         this.name = config;
@@ -34,6 +35,10 @@ level.prototype = {
 
         this.background = this.game.add.image(0, 0, this.config.level.backgroundImage);
         this.foreground = this.game.add.image(0, 0, this.config.level.foregroundImage);
+
+        this.music = this.game.add.audio('bg_ingame');
+        this.music.loopFull();
+        this.music.play();
 
         this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.ESC]);
         this.keys.esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
@@ -259,6 +264,7 @@ level.prototype = {
                     this.game.state.start('GameWon');
                 }.bind(this));
             }
+            this.music.stop();
             tween.start();
         } else if(someDestroyed) {
             this.active = false;
@@ -266,6 +272,7 @@ level.prototype = {
                 this.game.state.clearCurrentState();
                 this.game.state.start('GameOver');
             }.bind(this));
+            this.music.stop();
             tween.start();
         }
     },
@@ -316,5 +323,8 @@ level.prototype = {
             this.game.world.bringToTop(this.circleBlack);
             this.checkNextLevel();
         }
+    },
+    shutdown: function() {
+        this.music.destroy();
     }
 };

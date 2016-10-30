@@ -60,6 +60,10 @@ load.prototype = {
 
         // Images
         this.game.load.image('circle_black', 'img/circle_black.png');
+
+        // Audio
+        this.game.load.audio('bg_ingame', ['audio/bg_ingame.mp3', 'audio/bg_ingame.ogg']);
+        this.game.load.audio('fx_train_crash', ['audio/fx_train_crash.mp3', 'audio/fx_train_crash.ogg']);
     },
     create: function () {
         console.log('load.create');
