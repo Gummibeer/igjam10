@@ -210,7 +210,7 @@ level.prototype = {
         var centerOfBoundaries = boundaries.getPoint(Phaser.CENTER);
         var intersectingTracksByDistance = intersectingTracks.map(function (track) {
             var trackCenter = track.getBounds().getPoint(Phaser.CENTER);
-            var distance = Math.sqrt(Math.abs((trackCenter.x - centerOfBoundaries.x)^2 + (trackCenter.y - centerOfBoundaries.y)^2));
+            var distance = Math.sqrt(Math.pow(Math.abs(trackCenter.x - centerOfBoundaries.x),2) + Math.pow(Math.abs(trackCenter.y - centerOfBoundaries.y), 2));
             return {
                 track: track,
                 distance: distance
