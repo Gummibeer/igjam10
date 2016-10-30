@@ -8,7 +8,7 @@
   "nextLevel": "level-1",
   "trains": [
     {
-      "type": "green",
+      "type": "blue",
       "waggonLength": 0,
       "startRotation": 0,
       "track": [
@@ -62,7 +62,7 @@
     },
 
     {
-      "type": "blue",
+      "type": "green",
       "waggonLength": 0,
       "startRotation": 0,
       "track": [
