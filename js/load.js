@@ -42,6 +42,12 @@ load.prototype = {
         this.game.load.image('bg_level_1', 'img/bg_level_1.jpg');
         this.game.load.image('bg_level_2', 'img/bg_level_2.jpg');
         this.game.load.image('bg_level_3', 'img/bg_level_3.jpg');
+        this.game.load.image('bg_game_over_cemetery', 'img/bg_game_over_cemetery.jpg');
+        this.game.load.image('bg_game_over_coffin', 'img/bg_game_over_coffin.jpg');
+        this.game.load.image('bg_game_over_skull', 'img/bg_game_over_skull.jpg');
+        this.game.load.image('bg_game_won_candy_1', 'img/bg_game_won_candy_1.jpg');
+        this.game.load.image('bg_game_won_candy_2', 'img/bg_game_won_candy_2.jpg');
+        this.game.load.image('bg_game_won_corn', 'img/bg_game_won_corn.jpg');
 
         // Foregrounds
         this.game.load.image('fg_level_1', 'img/fg_level_1.png');
