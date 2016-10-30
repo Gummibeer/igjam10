@@ -223,16 +223,6 @@ level.prototype = {
             draggedButton.hoveredTrack = intersectingTrack;
         }
     },
-    placePowerUp: function () {
-        var boundariesOfTrack = intersectingTrack.getBounds();
-        if (draggedButton.isSpeedUp) {
-            this.speedUp = game.add.sprite(boundariesOfTrack.x, boundariesOfTrack.y, 'accelerator');
-        }
-        if (draggedButton.isSlowDown) {
-            this.slowDown = game.add.sprite(boundariesOfTrack.x, boundariesOfTrack.y, 'decelerator');
-        }
-        draggedButton.onDragStop();
-    },
     checkNextLevel: function () {
         var allArrived = this.trains.every(function (train) {
             return train.arrived;
