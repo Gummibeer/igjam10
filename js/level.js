@@ -320,9 +320,9 @@ level.prototype = {
             this.game.world.bringToTop(this.groups.trains);
             this.game.world.bringToTop(this.foreground);
             this.game.world.bringToTop(this.groups.ui);
-            this.game.world.bringToTop(this.circleBlack);
             this.checkNextLevel();
         }
+        this.game.world.bringToTop(this.circleBlack);
     },
     shutdown: function() {
         this.music.destroy();
