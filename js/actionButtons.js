@@ -49,7 +49,6 @@ ActionButton.prototype = {
     },
     disable: function () {
         this.isDisabled = true;
-        this.backgroundSprite.alpha = 0.25;
         this.backgroundSprite.loadTexture(this.backgroundWhileDragging);
     }
 };
