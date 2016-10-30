@@ -3,8 +3,8 @@
     "width": 1280,
     "height": 720
   },
-  "backgroundImage": "bg_level_1",
-  "foregroundImage": "fg_level_1",
+  "backgroundImage": "bg_level_0",
+  "foregroundImage": "fg_level_0",
   "nextLevel": "level-1",
   "trains": [
     {

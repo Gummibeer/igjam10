@@ -58,9 +58,11 @@ load.prototype = {
         // Backgrounds
         this.game.load.image('bg_menu', 'img/bg_menu.jpg');
         this.game.load.image('bg_intro', 'img/bg_intro.jpg');
+        this.game.load.image('bg_level_0', 'img/bg_level_0.jpg');
         this.game.load.image('bg_level_1', 'img/bg_level_1.jpg');
         this.game.load.image('bg_level_2', 'img/bg_level_2.jpg');
         this.game.load.image('bg_level_3', 'img/bg_level_3.jpg');
+        this.game.load.image('bg_level_4', 'img/bg_level_4.jpg');
         this.game.load.image('bg_game_over_cemetery', 'img/bg_game_over_cemetery.jpg');
         this.game.load.image('bg_game_over_coffin', 'img/bg_game_over_coffin.jpg');
         this.game.load.image('bg_game_over_skull', 'img/bg_game_over_skull.jpg');
@@ -73,9 +75,11 @@ load.prototype = {
         this.game.load.image('bg_game_won_centipede', 'img/bg_game_won_centipede.jpg');
 
         // Foregrounds
+        this.game.load.image('fg_level_0', 'img/fg_level_0.png');
         this.game.load.image('fg_level_1', 'img/fg_level_1.png');
         this.game.load.image('fg_level_2', 'img/fg_level_2.png');
         this.game.load.image('fg_level_3', 'img/fg_level_3.png');
+        this.game.load.image('fg_level_4', 'img/fg_level_4.png');
 
         // Images
         this.game.load.image('circle_black', 'img/circle_black.png');
