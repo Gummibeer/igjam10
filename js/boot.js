@@ -9,6 +9,7 @@ boot.prototype = {
     create: function () {
         console.log('boot.create');
         this.game.stage.backgroundColor = '#000000';
+        this.game.displayTutorial = true;
         this.game.state.clearCurrentState();
         this.game.state.start('Load');
     }

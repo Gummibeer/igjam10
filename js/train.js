@@ -87,6 +87,8 @@ Train.prototype = {
     },
     onCollide: function () {
         this.destroyed = true;
+        var sound = game.add.audio('fx_train_crash');
+        sound.play();
         console.log('collision', this);
     }
 };

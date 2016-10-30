@@ -4,7 +4,7 @@ var load = function (game) {
 load.prototype = {
     preload: function () {
         console.log('load.preload');
-        var loadingBar = this.add.sprite(160, 240, "loading");
+        var loadingBar = this.add.sprite(this.game.world.centerX - 95, this.game.world.centerY, "loading");
         loadingBar.anchor.setTo(0.5, 0.5);
         this.load.setPreloadSprite(loadingBar);
 
@@ -60,6 +60,10 @@ load.prototype = {
 
         // Images
         this.game.load.image('circle_black', 'img/circle_black.png');
+
+        // Audio
+        this.game.load.audio('bg_ingame', ['audio/bg_ingame.mp3', 'audio/bg_ingame.ogg']);
+        this.game.load.audio('fx_train_crash', ['audio/fx_train_crash.mp3', 'audio/fx_train_crash.ogg']);
     },
     create: function () {
         console.log('load.create');
