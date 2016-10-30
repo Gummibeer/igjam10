@@ -130,6 +130,7 @@ level.prototype = {
                 if (hoveredTrack) {
                     self.speedUp = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'accelerator');
                     self.speedUp.anchor.setTo(0.5);
+                    this.disable();
                 }
             }
         });
@@ -146,6 +147,7 @@ level.prototype = {
                 if (hoveredTrack) {
                     self.slowDown = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'decelerator');
                     self.slowDown.anchor.setTo(0.5);
+                    this.disable();
                 }
             }
         });
