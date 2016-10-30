@@ -18,20 +18,22 @@ load.prototype = {
         this.game.load.json('level-3', 'config/level-3.json');
 
         // Rails
-        this.game.load.image('tex_rail_activator_active', 'img/textures/rail_activator_active.png');
-        this.game.load.image('tex_rail_activator', 'img/textures/rail_activator.png');
         this.game.load.image('tex_rail_curve', 'img/textures/rail_curve.png');
-        this.game.load.image('tex_rail_detector_active', 'img/textures/rail_detector_active.png');
-        this.game.load.image('tex_rail_golden_active', 'img/textures/rail_golden_active.png');
-        this.game.load.image('tex_rail_golden_inactive', 'img/textures/rail_golden_inactive.png');
         this.game.load.image('tex_rail_straight', 'img/textures/rail_straight.png');
         this.game.load.image('tex_rail_crossing', 'img/textures/rail_crossing.png');
+
+        this.game.load.image('tex_speed_up_base', 'img/textures/rail_golden_active.png');
+        this.game.load.image('tex_speed_up_dome', 'img/textures/rail_golden_active.png');
+        this.game.load.image('tex_slow_down_base', 'img/textures/rail_golden_inactive.png');
+        this.game.load.image('tex_slow_down_dome', 'img/textures/rail_golden_inactive.png');
 
         // Trains
         this.game.load.image('tex_train_head_green', 'img/textures/train_head_green.png');
         this.game.load.image('tex_train_body_green', 'img/textures/train_body_green.png');
+
         this.game.load.image('tex_train_head_red', 'img/textures/train_head_red.png');
         this.game.load.image('tex_train_body_red', 'img/textures/train_body_red.png');
+
         this.game.load.image('tex_train_head_blue', 'img/textures/train_head_blue.png');
         this.game.load.image('tex_train_body_blue', 'img/textures/train_body_blue.png');
 
