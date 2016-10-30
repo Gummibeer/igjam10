@@ -10,7 +10,9 @@ var ActionButton = function (options) {
 ActionButton.prototype = {
     init: function () {
         this.dragSprite.inputEnabled = true;
-        this.dragSprite.input.enableDrag();
+        this.dragSprite.input.enableDrag({
+            lockCenter: true
+        });
         this.dragSprite.events.onDragStart.add(this.onDragStart, this);
         this.dragSprite.events.onDragStop.add(this.onDragStop, this);
         return this;
