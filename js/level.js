@@ -123,7 +123,7 @@ level.prototype = {
         var timeAcceleratorButton = new ActionButton({
             background: 'btn_speed_up',
             isSpeedUp: true,
-            x: 1085,
+            x: this.game.world.width - 95 - 20,
             y: 20,
             handleDropStop: function () {
                 var hoveredTrack = this.hoveredTrack;
@@ -140,8 +140,8 @@ level.prototype = {
         var timeDeceleratorButton = new ActionButton({
             background: 'btn_slow_down',
             isSlowDown: true,
-            x: 1085,
-            y: 130,
+            x: this.game.world.width - 95 - 20 - 95 - 20,
+            y: 20,
             handleDropStop: function () {
                 var hoveredTrack = this.hoveredTrack;
                 if (hoveredTrack) {

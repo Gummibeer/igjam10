@@ -9,7 +9,7 @@
   "trains": [
     {
       "type": "green",
-      "waggonLength": 2,
+      "waggonLength": 4,
       "startRotation": 0,
       "track": [
         [0, 1, "straight", 90],
@@ -61,7 +61,7 @@
     },
 
     {
-      "type": "red",
+      "type": "blue",
       "waggonLength": 2,
       "startRotation": 0,
       "track": [

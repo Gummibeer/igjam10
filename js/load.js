@@ -32,6 +32,8 @@ load.prototype = {
         this.game.load.image('tex_train_body_green', 'img/textures/train_body_green.png');
         this.game.load.image('tex_train_head_red', 'img/textures/train_head_red.png');
         this.game.load.image('tex_train_body_red', 'img/textures/train_body_red.png');
+        this.game.load.image('tex_train_head_blue', 'img/textures/train_head_blue.png');
+        this.game.load.image('tex_train_body_blue', 'img/textures/train_body_blue.png');
 
         // UI
         this.game.load.image('btn_slow_down', 'img/btn_slow_down.png');
