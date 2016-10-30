@@ -4,6 +4,7 @@ var intro = function (game) {
 intro.prototype = {
     create: function () {
         console.log('intro.create');
+        this.game.add.image(0, 0, 'bg_intro');
         if(!this.game.displayTutorial) {
             this.game.state.clearCurrentState();
             this.game.state.start('Level', true, false, 'level-0');
