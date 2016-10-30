@@ -26,7 +26,7 @@ ActionButton.prototype = {
         this.dragSprite.scale.setTo(0.5, 0.5);
         this.dragSprite.anchor.setTo(-0.5);
         this.dragSprite.alpha = 0.2;
-        console.log('dragStart', this);
+        console.log('dragStart');
     },
     onDragStop: function () {
         console.log('dragStop', this);
