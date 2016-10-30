@@ -22,5 +22,9 @@ gameover.prototype = {
 
         this.game.input.keyboard.onDownCallback = onInput;
         this.game.input.onDown.add(onInput);
+    },
+    shutdown: function() {
+        this.game.input.keyboard.onDownCallback = null;
+        this.game.input.onDown.removeAll();
     }
 };

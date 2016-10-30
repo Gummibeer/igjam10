@@ -13,12 +13,16 @@ intro.prototype = {
         //console.log('intro.update');
 
         function onInput() {
-            game.displayTutorial = false;
             game.state.clearCurrentState();
             game.state.start('Level', true, false, 'level-1');
         }
 
         this.game.input.keyboard.onDownCallback = onInput;
         this.game.input.onDown.add(onInput);
+    },
+    shutdown: function() {
+        this.game.displayTutorial = false;
+        this.game.input.keyboard.onDownCallback = null;
+        this.game.input.onDown.removeAll();
     }
 };
