@@ -48,8 +48,7 @@ load.prototype = {
         // UI
         this.game.load.image('btn_slow_down', 'img/btn_slow_down.png');
         this.game.load.image('btn_speed_up', 'img/btn_speed_up.png');
-        this.game.load.image('accelerator', 'img/textures/rail_golden_active.png');
-        this.game.load.image('decelerator', 'img/textures/rail_golden_inactive.png');
+        this.game.load.image('ui_ant_scientist', 'img/ui_ant_scientist.png');
 
         // Backgrounds
         this.game.load.image('bg_menu', 'img/bg_menu.jpg');
