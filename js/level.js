@@ -306,6 +306,7 @@ level.prototype = {
             this.checkIsActionButtonOverTrack();
             this.game.world.bringToTop(this.groups.trains);
             this.game.world.bringToTop(this.foreground);
+            this.game.world.bringToTop(this.groups.ui);
             this.game.world.bringToTop(this.circleBlack);
             this.checkNextLevel();
         }
