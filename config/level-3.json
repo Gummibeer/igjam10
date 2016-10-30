@@ -8,21 +8,21 @@
   "foregroundImage": "fg_level_3",
   "trains": [
     {
-      "type": "green",
-      "waggonLength": 2,
+      "type": "purple",
+      "waggonLength": 5,
       "startRotation": 90,
       "track": [
         [6, 2, "straight", 0],
         [6, 3, "straight", 0],
         [6, 4, "straight", 0],
-        [6, 5, "curve", 180],
-        [5, 5, "straight", 90],
-        [4, 5, "straight", 90],
-        [3, 5, "straight", 90],
-        [2, 5, "curve", 0],
-        [2, 6, "straight", 0],
-        [2, 7, "straight", 0],
-        [2, 8, "straight", 0],
+        [6, 5, "straight", 0],
+        [6, 6, "straight", 0],
+        [6, 7, "straight", 0],
+        [6, 8, "curve", 180],
+        [5, 8, "straight", 90],
+        [4, 8, "straight", 90],
+        [3, 8, "straight", 90],
+        [2, 8, "curve", 0],
         [2, 9, "straight", 0],
         [2, 10, "straight", 0],
         [2, 11, "straight", 0],
@@ -60,12 +60,13 @@
         [22, 19, "straight", 90],
         [21, 19, "straight", 90],
         [20, 19, "straight", 90],
-        [19, 19, "straight", 90]
+        [19, 19, "straight", 90],
+        [18, 19, "straight", 90]
       ]
     },
     {
       "type": "blue",
-      "waggonLength": 2,
+      "waggonLength": 4,
       "startRotation": 90,
       "track": [
         [17, 10, "straight", 0],
@@ -110,7 +111,7 @@
     },
     {
       "type": "red",
-      "waggonLength": 2,
+      "waggonLength": 3,
       "startRotation": 90,
       "track": [
         [9, 2, "straight", 0],

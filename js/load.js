@@ -34,9 +34,15 @@ load.prototype = {
 
         this.game.load.image('tex_train_head_red', 'img/textures/train_head_red.png');
         this.game.load.image('tex_train_body_red', 'img/textures/train_body_red.png');
+        this.game.load.image('tex_train_tail_red', 'img/textures/train_tail_red.png');
 
         this.game.load.image('tex_train_head_blue', 'img/textures/train_head_blue.png');
         this.game.load.image('tex_train_body_blue', 'img/textures/train_body_blue.png');
+        this.game.load.image('tex_train_tail_blue', 'img/textures/train_tail_blue.png');
+
+        this.game.load.image('tex_train_head_purple', 'img/textures/train_head_purple.png');
+        this.game.load.image('tex_train_body_purple', 'img/textures/train_body_purple.png');
+        this.game.load.image('tex_train_tail_purple', 'img/textures/train_tail_purple.png');
 
         // UI
         this.game.load.image('btn_slow_down', 'img/btn_slow_down.png');

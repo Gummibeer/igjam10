@@ -10,5 +10,9 @@
   "blue": {
     "image": "blue",
     "speed": 4.2
+  },
+  "purple": {
+    "image": "purple",
+    "speed": 5
   }
 }
