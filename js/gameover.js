@@ -16,6 +16,8 @@ gameover.prototype = {
         //console.log('gameover.update');
 
         function onInput() {
+            game.input.keyboard.onDownCallback = null;
+            game.input.onDown.removeAll();
             game.state.clearCurrentState();
             game.state.start('Menu');
         }

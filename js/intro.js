@@ -14,6 +14,8 @@ intro.prototype = {
 
         function onInput() {
             game.displayTutorial = false;
+            game.input.keyboard.onDownCallback = null;
+            game.input.onDown.removeAll();
             game.state.clearCurrentState();
             game.state.start('Level', true, false, 'level-1');
         }
