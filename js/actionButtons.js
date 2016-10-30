@@ -26,6 +26,7 @@ ActionButton.prototype = {
         this.dragSprite.scale.setTo(0.5, 0.5);
         this.dragSprite.anchor.setTo(-0.5);
         this.dragSprite.alpha = 0.2;
+        game.canvas.style.cursor = "none";
         console.log('dragStart');
     },
     onDragStop: function () {
@@ -35,6 +36,7 @@ ActionButton.prototype = {
         this.handleDropStop();
         this.dragSprite.alpha = 1;
         this.isDragging = false;
+        game.canvas.style.cursor = "default";
         this.resetSpritePosition();
     },
     disable: function () {
