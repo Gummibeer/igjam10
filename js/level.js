@@ -41,6 +41,7 @@ level.prototype = {
 
         this.groups.trains = this.game.add.group();
         this.groups.ui = this.game.add.group();
+        this.groups.domes = this.game.add.group();
 
         this.background = this.game.add.image(0, 0, this.config.level.backgroundImage);
         this.foreground = this.game.add.image(0, 0, this.config.level.foregroundImage);
@@ -66,6 +67,7 @@ level.prototype = {
         }.bind(this));
         this.groups.powerUps = this.game.add.group();
         this.game.world.bringToTop(this.groups.trains);
+        this.game.world.bringToTop(this.groups.domes);
         this.game.world.bringToTop(this.foreground);
         this.game.world.bringToTop(this.groups.ui);
         this.game.world.bringToTop(this.groups.powerUps);
@@ -150,6 +152,7 @@ level.prototype = {
                     self.speedUpDome = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_speed_up_dome');
                     self.speedUp.anchor.setTo(0.5);
                     self.speedUpDome.anchor.setTo(0.5);
+                    self.groups.domes.add(self.speedUpDome);
                     this.disable();
                 }
             }
@@ -169,6 +172,7 @@ level.prototype = {
                     self.slowDownDome = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_slow_down_dome');
                     self.slowDown.anchor.setTo(0.5);
                     self.slowDownDome.anchor.setTo(0.5);
+                    self.groups.domes.add(self.slowDownDome);
                     this.disable();
                 }
             }
@@ -347,6 +351,7 @@ level.prototype = {
             this.checkTrainCollisions();
             this.checkIsActionButtonOverTrack();
             this.game.world.bringToTop(this.groups.trains);
+            this.game.world.bringToTop(this.groups.domes);
             this.game.world.bringToTop(this.foreground);
             this.game.world.bringToTop(this.groups.ui);
             this.game.world.bringToTop(this.groups.powerUps);
