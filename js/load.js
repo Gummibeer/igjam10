@@ -24,10 +24,10 @@ load.prototype = {
         this.game.load.image('tex_rail_straight', 'img/textures/rail_straight.png');
         this.game.load.image('tex_rail_crossing', 'img/textures/rail_crossing.png');
 
-        this.game.load.image('tex_speed_up_base', 'img/textures/rail_golden_active.png');
-        this.game.load.image('tex_speed_up_dome', 'img/textures/rail_golden_active.png');
-        this.game.load.image('tex_slow_down_base', 'img/textures/rail_golden_inactive.png');
-        this.game.load.image('tex_slow_down_dome', 'img/textures/rail_golden_inactive.png');
+        this.game.load.image('tex_speed_up_base', 'img/textures/speed_up_base.png');
+        this.game.load.image('tex_speed_up_dome', 'img/textures/speed_up_dome.png');
+        this.game.load.image('tex_slow_down_base', 'img/textures/slow_down_base.png');
+        this.game.load.image('tex_slow_down_dome', 'img/textures/slow_down_dome.png');
 
         // Trains
         this.game.load.image('tex_train_head_green', 'img/textures/train_head_green.png');

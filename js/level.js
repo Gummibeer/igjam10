@@ -258,7 +258,7 @@ level.prototype = {
         }
         var dragButton = this.getDraggedButton();
         if (track && dragButton) {
-            var highlightImageName = dragButton.isSpeedUp ? 'tex_speed_up_base' : 'tex_speed_down_base';
+            var highlightImageName = dragButton.isSpeedUp ? 'tex_speed_up_base' : 'tex_slow_down_base';
             this.trackHighlight = game.add.sprite(track.x, track.y, highlightImageName);
             this.trackHighlight.anchor.setTo(0.5);
         }
