@@ -47,8 +47,12 @@ load.prototype = {
         this.game.load.image('tex_train_tail_purple', 'img/textures/train_tail_purple.png');
 
         // UI
-        this.game.load.image('btn_slow_down', 'img/btn_slow_down.png');
-        this.game.load.image('btn_speed_up', 'img/btn_speed_up.png');
+        this.game.load.image('ui_button_slow_down', 'img/ui_button_slow_down.png');
+        this.game.load.image('ui_button_slow_down_active', 'img/ui_button_slow_down_active.png');
+        this.game.load.image('ui_slow_down_dragging', 'img/ui_slow_down_dragging.png');
+        this.game.load.image('ui_button_speed_up', 'img/ui_button_speed_up.png');
+        this.game.load.image('ui_button_speed_up_active', 'img/ui_button_speed_up_active.png');
+        this.game.load.image('ui_speed_up_dragging', 'img/ui_speed_up_dragging.png');
         this.game.load.image('ui_ant_scientist', 'img/ui_ant_scientist.png');
 
         // Backgrounds
