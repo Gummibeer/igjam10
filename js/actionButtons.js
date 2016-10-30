@@ -51,5 +51,6 @@ ActionButton.prototype = {
     disable: function () {
         this.isDisabled = true;
         this.backgroundSprite.loadTexture(this.backgroundWhileDragging);
+        this.dragSprite.inputEnabled = false;
     }
 };
