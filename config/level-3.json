@@ -4,6 +4,7 @@
     "height": 720
   },
   "backgroundImage": "bg_level_3",
+  "nextLevel": "level-4",
   "foregroundImage": "fg_level_3",
   "trains": [
     {
