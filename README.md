@@ -1,4 +1,4 @@
-# IG JAM #10
+![Ameisen general](https://raw.githubusercontent.com/Gummibeer/igjam10/master/img/logo.png)
 
 **Issues:** https://trello.com/b/VfMhU57V/ig10
 

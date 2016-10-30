@@ -13,6 +13,7 @@ load.prototype = {
 
         // Configs
         this.game.load.json('trains', 'config/trains.json');
+        this.game.load.json('level-0', 'config/level-0.json');
         this.game.load.json('level-1', 'config/level-1.json');
         this.game.load.json('level-2', 'config/level-2.json');
         this.game.load.json('level-3', 'config/level-3.json');
@@ -35,15 +36,20 @@ load.prototype = {
 
         this.game.load.image('tex_train_head_red', 'img/textures/train_head_red.png');
         this.game.load.image('tex_train_body_red', 'img/textures/train_body_red.png');
+        this.game.load.image('tex_train_tail_red', 'img/textures/train_tail_red.png');
 
         this.game.load.image('tex_train_head_blue', 'img/textures/train_head_blue.png');
         this.game.load.image('tex_train_body_blue', 'img/textures/train_body_blue.png');
+        this.game.load.image('tex_train_tail_blue', 'img/textures/train_tail_blue.png');
+
+        this.game.load.image('tex_train_head_purple', 'img/textures/train_head_purple.png');
+        this.game.load.image('tex_train_body_purple', 'img/textures/train_body_purple.png');
+        this.game.load.image('tex_train_tail_purple', 'img/textures/train_tail_purple.png');
 
         // UI
         this.game.load.image('btn_slow_down', 'img/btn_slow_down.png');
         this.game.load.image('btn_speed_up', 'img/btn_speed_up.png');
-        this.game.load.image('accelerator', 'img/textures/rail_golden_active.png');
-        this.game.load.image('decelerator', 'img/textures/rail_golden_inactive.png');
+        this.game.load.image('ui_ant_scientist', 'img/ui_ant_scientist.png');
 
         // Backgrounds
         this.game.load.image('bg_menu', 'img/bg_menu.jpg');
@@ -53,9 +59,13 @@ load.prototype = {
         this.game.load.image('bg_game_over_cemetery', 'img/bg_game_over_cemetery.jpg');
         this.game.load.image('bg_game_over_coffin', 'img/bg_game_over_coffin.jpg');
         this.game.load.image('bg_game_over_skull', 'img/bg_game_over_skull.jpg');
+        this.game.load.image('bg_game_over_blood', 'img/bg_game_over_blood.jpg');
+        this.game.load.image('bg_game_over_crutch', 'img/bg_game_over_crutch.jpg');
+
         this.game.load.image('bg_game_won_candy_1', 'img/bg_game_won_candy_1.jpg');
         this.game.load.image('bg_game_won_candy_2', 'img/bg_game_won_candy_2.jpg');
         this.game.load.image('bg_game_won_corn', 'img/bg_game_won_corn.jpg');
+        this.game.load.image('bg_game_won_centipede', 'img/bg_game_won_centipede.jpg');
 
         // Foregrounds
         this.game.load.image('fg_level_1', 'img/fg_level_1.png');

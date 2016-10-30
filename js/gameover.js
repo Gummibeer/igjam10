@@ -3,9 +3,8 @@ var gameover = function (game) {
 
 gameover.prototype = {
     images: [
-        'bg_game_over_cemetery',
-        'bg_game_over_coffin',
-        'bg_game_over_skull'
+        'bg_game_over_blood',
+        'bg_game_over_crutch'
     ],
     create: function () {
         console.log('gameover.create');

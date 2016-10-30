@@ -35,8 +35,12 @@ level.prototype = {
         this.config.level = this.game.cache.getJSON(this.name);
         this.config.trains = this.game.cache.getJSON('trains');
 
+        this.groups.trains = this.game.add.group();
+        this.groups.ui = this.game.add.group();
+
         this.background = this.game.add.image(0, 0, this.config.level.backgroundImage);
         this.foreground = this.game.add.image(0, 0, this.config.level.foregroundImage);
+        this.groups.ui.add(this.game.add.image(this.game.world.width - 169 - 20, this.game.world.height - 182 - 20, 'ui_ant_scientist'));
 
         this.music = this.game.add.audio('bg_ingame');
         this.music.loopFull();
@@ -65,7 +69,6 @@ level.prototype = {
         tween.start();
     },
     createTrains: function () {
-        this.groups.trains = this.game.add.group();
         var data;
         for (var i = 0; i < this.config.level.trains.length; i++) {
             data = this.config.level.trains[i];
@@ -131,8 +134,6 @@ level.prototype = {
     },
     createActionButtons: function () {
         var self = this;
-        this.groups.ui = this.game.add.group();
-
         var timeAcceleratorButton = new ActionButton({
             background: 'btn_speed_up',
             isSpeedUp: true,
