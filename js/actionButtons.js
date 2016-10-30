@@ -1,10 +1,12 @@
 var ActionButton = function (options) {
     this.backgroundSprite = game.add.sprite(options.x, options.y, options.background);
-    this.dragSprite = game.add.sprite(options.x, options.y, options.background);
+    this.backgroundWhileDragging = options.backgroundWhileDragging,
+    this.dragSprite = game.add.sprite(options.x, options.y, options.dragImage);
     this.isDragging = false;
     this.isSlowDown = options.isSlowDown;
     this.isSpeedUp = options.isSpeedUp;
     this.handleDropStop = options.handleDropStop;
+    this.isDisabled = false;
 };
 
 ActionButton.prototype = {
@@ -22,24 +24,32 @@ ActionButton.prototype = {
         this.dragSprite.y = this.backgroundSprite.y;
     },
     onDragStart: function () {
+        if (this.isDisabled) {
+            return;
+        }
         this.isDragging = true;
+        this.backgroundSprite.loadTexture(this.backgroundWhileDragging);
         this.dragSprite.scale.setTo(0.5, 0.5);
         this.dragSprite.anchor.setTo(-0.5);
-        this.dragSprite.alpha = 0.2;
         game.canvas.style.cursor = "none";
         console.log('dragStart');
     },
     onDragStop: function () {
+        if (this.isDisabled) {
+            return;
+        }
         console.log('dragStop', this);
+        this.backgroundSprite.loadTexture(this.background);
         this.dragSprite.scale.setTo(1, 1);
         this.dragSprite.anchor.setTo(0);
         this.handleDropStop();
-        this.dragSprite.alpha = 1;
         this.isDragging = false;
         game.canvas.style.cursor = "default";
         this.resetSpritePosition();
     },
     disable: function () {
+        this.isDisabled = true;
         this.backgroundSprite.alpha = 0.25;
+        this.backgroundSprite.loadTexture(this.backgroundWhileDragging);
     }
 };

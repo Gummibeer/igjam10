@@ -141,7 +141,9 @@ level.prototype = {
     createActionButtons: function () {
         var self = this;
         var timeAcceleratorButton = new ActionButton({
-            background: 'btn_speed_up',
+            background: 'ui_button_speed_up',
+            backgroundWhileDragging: 'ui_button_speed_up_active',
+            dragImage: 'ui_speed_up_dragging',
             isSpeedUp: true,
             x: this.game.world.width - 95 - 20,
             y: 20,
@@ -161,7 +163,9 @@ level.prototype = {
         this.groups.ui.add(timeAcceleratorButton.backgroundSprite);
 
         var timeDeceleratorButton = new ActionButton({
-            background: 'btn_slow_down',
+            background: 'ui_button_slow_down',
+            backgroundWhileDragging: 'ui_button_slow_down_active',
+            dragImage: 'ui_slow_down_dragging',
             isSlowDown: true,
             x: this.game.world.width - 95 - 20 - 95 - 20,
             y: 20,
