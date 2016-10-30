@@ -14,7 +14,9 @@ level.prototype = {
     active: false,
     circleBlack: null,
     speedUp: null,
+    speedUpDome: null,
     slowDown: null,
+    slowDownDome: null,
     trackHighlight: null,
     music: null,
     init: function (config) {
@@ -25,7 +27,9 @@ level.prototype = {
         this.trains = [];
         this.actionButtons = [];
         this.speedUp = null;
+        this.speedUpDome = null;
         this.slowDown = null;
+        this.slowDownDome = null;
         this.background = null;
         this.foreground = null;
         this.trackHighlight = null;
@@ -142,8 +146,10 @@ level.prototype = {
             handleDropStop: function () {
                 var hoveredTrack = this.hoveredTrack;
                 if (hoveredTrack) {
-                    self.speedUp = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_speed_up_dome');
+                    self.speedUp = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_speed_up_base');
+                    self.speedUpDome = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_speed_up_dome');
                     self.speedUp.anchor.setTo(0.5);
+                    self.speedUpDome.anchor.setTo(0.5);
                     this.disable();
                 }
             }
@@ -159,8 +165,10 @@ level.prototype = {
             handleDropStop: function () {
                 var hoveredTrack = this.hoveredTrack;
                 if (hoveredTrack) {
-                    self.slowDown = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_slow_down_dome');
+                    self.slowDown = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_slow_down_base');
+                    self.slowDownDome = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_slow_down_dome');
                     self.slowDown.anchor.setTo(0.5);
+                    self.slowDownDome.anchor.setTo(0.5);
                     this.disable();
                 }
             }
