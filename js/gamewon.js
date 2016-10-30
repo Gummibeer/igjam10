@@ -3,9 +3,7 @@ var gamewon = function (game) {
 
 gamewon.prototype = {
     images: [
-        'bg_game_won_candy_1',
-        'bg_game_won_candy_2',
-        'bg_game_won_corn'
+        'bg_game_won_centipede'
     ],
     create: function () {
         console.log('gamewon.create');
