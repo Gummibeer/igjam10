@@ -14,9 +14,13 @@ gameover.prototype = {
     },
     update: function() {
         //console.log('gameover.update');
-        this.game.input.onDown.add(function() {
-            this.game.state.clearCurrentState();
-            this.game.state.start('Menu');
-        }.bind(this));
+
+        function onInput() {
+            game.state.clearCurrentState();
+            game.state.start('Menu');
+        }
+
+        this.game.input.keyboard.onDownCallback = onInput;
+        this.game.input.onDown.add(onInput);
     }
 };
