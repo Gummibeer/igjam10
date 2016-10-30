@@ -15,6 +15,7 @@ level.prototype = {
     circleBlack: null,
     speedUp: null,
     slowDown: null,
+    trackHighlight: null,
     music: null,
     init: function (config) {
         console.log('level.init');
@@ -27,6 +28,7 @@ level.prototype = {
         this.slowDown = null;
         this.background = null;
         this.foreground = null;
+        this.trackHighlight = null;
     },
     create: function () {
         console.log('level.create');
@@ -54,9 +56,11 @@ level.prototype = {
         tween.onComplete.add(function() {
             this.active = true;
         }.bind(this));
+        this.groups.powerUps = this.game.add.group();
         this.game.world.bringToTop(this.groups.trains);
         this.game.world.bringToTop(this.foreground);
         this.game.world.bringToTop(this.groups.ui);
+        this.game.world.bringToTop(this.groups.powerUps);
         this.game.world.bringToTop(this.circleBlack);
         tween.start();
     },
@@ -137,7 +141,7 @@ level.prototype = {
             handleDropStop: function () {
                 var hoveredTrack = this.hoveredTrack;
                 if (hoveredTrack) {
-                    self.speedUp = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'accelerator');
+                    self.speedUp = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_speed_up_dome');
                     self.speedUp.anchor.setTo(0.5);
                     this.disable();
                 }
@@ -154,7 +158,7 @@ level.prototype = {
             handleDropStop: function () {
                 var hoveredTrack = this.hoveredTrack;
                 if (hoveredTrack) {
-                    self.slowDown = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'decelerator');
+                    self.slowDown = game.add.sprite(hoveredTrack.x, hoveredTrack.y, 'tex_slow_down_dome');
                     self.slowDown.anchor.setTo(0.5);
                     this.disable();
                 }
@@ -240,10 +244,22 @@ level.prototype = {
         }
 
         var buttonBoundaries = draggedButton.dragSprite.getBounds();
-        var intersectingTrack = this.getNearestTrackSpriteThatIntersectsBoundaries(buttonBoundaries);
 
+        var intersectingTrack = this.getNearestTrackSpriteThatIntersectsBoundaries(buttonBoundaries);
         if (intersectingTrack) {
             draggedButton.hoveredTrack = intersectingTrack;
+        }
+        this.updateTrackHighlight(intersectingTrack);
+    },
+    updateTrackHighlight: function (track) {
+        if (this.trackHighlight) {
+            this.trackHighlight.destroy();
+        }
+        var dragButton = this.getDraggedButton();
+        if (track && dragButton) {
+            var highlightImageName = dragButton.isSpeedUp ? 'tex_speed_up_base' : 'tex_speed_down_base';
+            this.trackHighlight = game.add.sprite(track.x, track.y, highlightImageName);
+            this.trackHighlight.anchor.setTo(0.5);
         }
     },
     checkNextLevel: function () {
@@ -324,6 +340,7 @@ level.prototype = {
             this.game.world.bringToTop(this.groups.trains);
             this.game.world.bringToTop(this.foreground);
             this.game.world.bringToTop(this.groups.ui);
+            this.game.world.bringToTop(this.groups.powerUps);
             this.checkNextLevel();
         }
         this.game.world.bringToTop(this.circleBlack);
