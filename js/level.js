@@ -111,8 +111,8 @@ level.prototype = {
         for (var i = 0; i < data.waggonLength; i++) {
             var waggon = new TrainWaggon();
             var startPosition = {
-                x: data.track[i][0] * this.grid + (this.grid / 2),
-                y: data.track[i][1] * this.grid + (this.grid / 2)
+                x: data.track[data.waggonLength - 1 - i][0] * this.grid + (this.grid / 2),
+                y: data.track[data.waggonLength - 1 - i][1] * this.grid + (this.grid / 2)
             };
             var image = 'tex_train_body_'+this.config.trains[data.type].image;
             if(i == data.waggonLength - 1) {
