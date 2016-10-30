@@ -16,6 +16,7 @@ load.prototype = {
         this.game.load.json('level-1', 'config/level-1.json');
         this.game.load.json('level-2', 'config/level-2.json');
         this.game.load.json('level-3', 'config/level-3.json');
+        this.game.load.json('level-4', 'config/level-4.json');
 
         // Rails
         this.game.load.image('tex_rail_curve', 'img/textures/rail_curve.png');
