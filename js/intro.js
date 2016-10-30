@@ -5,6 +5,6 @@ intro.prototype = {
     create: function () {
         console.log('intro.create');
         this.game.state.clearCurrentState();
-        this.game.state.start('Level', true, false, 'level-1');
+        this.game.state.start('Level', true, false, 'level-3');
     }
 };
