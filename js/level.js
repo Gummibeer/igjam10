@@ -48,9 +48,9 @@ level.prototype = {
 
         this.circleBlack = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'circle_black');
         this.circleBlack.anchor.setTo(0.5, 0.5);
-        this.circleBlack.scale.x = 50;
-        this.circleBlack.scale.y = 50;
-        var tween = this.game.add.tween(this.circleBlack.scale).to({x:0, y:0}, 1500, Phaser.Easing.Exponential.Out);
+        this.circleBlack.scale.x = 3.5;
+        this.circleBlack.scale.y = 3.5;
+        var tween = this.game.add.tween(this.circleBlack.scale).to({x:0, y:0}, 2000, Phaser.Easing.Exponential.Out);
         tween.onComplete.add(function() {
             this.active = true;
         }.bind(this));
@@ -110,7 +110,11 @@ level.prototype = {
                 x: data.track[i][0] * this.grid + (this.grid / 2),
                 y: data.track[i][1] * this.grid + (this.grid / 2)
             };
-            waggon.sprite = this.game.add.sprite(startPosition.x, startPosition.y, 'tex_train_body_'+this.config.trains[data.type].image);
+            var image = 'tex_train_body_'+this.config.trains[data.type].image;
+            if(i == data.waggonLength - 1) {
+                image = 'tex_train_tail_'+this.config.trains[data.type].image;
+            }
+            waggon.sprite = this.game.add.sprite(startPosition.x, startPosition.y, image);
             waggon.sprite.anchor.setTo(0.5, 0.5);
             waggon.sprite.angle = data.startRotation;
             train.waggons.push(waggon);
@@ -249,7 +253,7 @@ level.prototype = {
         var someDestroyed = this.trains.some(function (train) {
             return train.destroyed;
         });
-        var tween = this.game.add.tween(this.circleBlack.scale).to({x:50, y:50}, 1500, Phaser.Easing.Exponential.Out);
+        var tween = this.game.add.tween(this.circleBlack.scale).to({x:3.5, y:3.5}, 1000, Phaser.Easing.Exponential.Out);
         if (allArrived) {
             this.active = false;
             var nextLevel = this.config.level.nextLevel;
