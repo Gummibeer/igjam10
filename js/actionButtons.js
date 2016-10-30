@@ -41,6 +41,5 @@ ActionButton.prototype = {
     },
     disable: function () {
         this.backgroundSprite.alpha = 0.25;
-        this.dragSprite.destroy();
     }
 };
