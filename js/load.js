@@ -30,6 +30,7 @@ load.prototype = {
         // Trains
         this.game.load.image('tex_train_head_green', 'img/textures/train_head_green.png');
         this.game.load.image('tex_train_body_green', 'img/textures/train_body_green.png');
+        this.game.load.image('tex_train_tail_green', 'img/textures/train_tail_green.png');
 
         this.game.load.image('tex_train_head_red', 'img/textures/train_head_red.png');
         this.game.load.image('tex_train_body_red', 'img/textures/train_body_red.png');
