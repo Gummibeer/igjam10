@@ -193,15 +193,29 @@ level.prototype = {
             return activeButton;
         });
     },
-    getTrackSpriteThatIntersectsBoundaries: function (boundaries) {
-        return this.getAllTrackSprites().reduce(function (intersectingTrack, trackSprite) {
-            if (intersectingTrack) {
-                return intersectingTrack;
-            }
+    getNearestTrackSpriteThatIntersectsBoundaries: function (boundaries) {
+        var intersectingTracks = this.getAllTrackSprites().filter(function (trackSprite) {
             if (Phaser.Rectangle.intersects(boundaries, trackSprite.getBounds())) {
                 return trackSprite;
             }
-        }, undefined);
+        });
+        if (!intersectingTracks.length) {
+            return;
+        }
+        var centerOfBoundaries = boundaries.getPoint(Phaser.CENTER);
+        var intersectingTracksByDistance = intersectingTracks.map(function (track) {
+            var trackCenter = track.getBounds().getPoint(Phaser.CENTER);
+            var distance = Math.sqrt(Math.abs((trackCenter.x - centerOfBoundaries.x)^2 + (trackCenter.y - centerOfBoundaries.y)^2));
+            return {
+                track: track,
+                distance: distance
+            };
+        });
+        function byDistance(a, b) {
+            return a.distance - b.distance;
+        }
+        return intersectingTracksByDistance.sort(byDistance)[0].track;
+
     },
     checkIsActionButtonOverTrack: function () {
         var draggedButton = this.getDraggedButton();
@@ -217,7 +231,7 @@ level.prototype = {
         }
 
         var buttonBoundaries = draggedButton.dragSprite.getBounds();
-        var intersectingTrack = this.getTrackSpriteThatIntersectsBoundaries(buttonBoundaries);
+        var intersectingTrack = this.getNearestTrackSpriteThatIntersectsBoundaries(buttonBoundaries);
 
         if (intersectingTrack) {
             draggedButton.hoveredTrack = intersectingTrack;
