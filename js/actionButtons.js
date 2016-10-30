@@ -1,8 +1,10 @@
 var ActionButton = function (options) {
-    this.timeModifier = options.timeModifier || 0;
     this.backgroundSprite = game.add.sprite(options.x, options.y, options.background);
     this.dragSprite = game.add.sprite(options.x, options.y, options.background);
-    this.isDragged = false;
+    this.isDragging = false;
+    this.isSlowDown = options.isSlowDown;
+    this.isSpeedUp = options.isSpeedUp;
+    this.handleDropStop = options.handleDropStop;
 };
 
 ActionButton.prototype = {
@@ -18,14 +20,19 @@ ActionButton.prototype = {
         this.dragSprite.y = this.backgroundSprite.y;
     },
     onDragStart: function () {
-        this.isDragged = true;
+        this.isDragging = true;
+        this.dragSprite.scale.setTo(0.5, 0.5);
+        this.dragSprite.anchor.setTo(-0.5);
         this.dragSprite.alpha = 0.2;
         console.log('dragStart', this);
     },
     onDragStop: function () {
-        this.isDragged = false;
-        this.dragSprite.alpha = 1;
         console.log('dragStop', this);
+        this.dragSprite.scale.setTo(1, 1);
+        this.dragSprite.anchor.setTo(0);
+        this.handleDropStop();
+        this.dragSprite.alpha = 1;
+        this.isDragging = false;
         this.resetSpritePosition();
     }
 };
