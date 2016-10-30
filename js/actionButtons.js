@@ -1,6 +1,6 @@
 var ActionButton = function (options) {
     this.backgroundSprite = game.add.sprite(options.x, options.y, options.background);
-    this.backgroundWhileDragging = options.backgroundWhileDragging,
+    this.backgroundWhileDragging = options.backgroundWhileDragging;
     this.dragSprite = game.add.sprite(options.x, options.y, options.dragImage);
     this.isDragging = false;
     this.isSlowDown = options.isSlowDown;
