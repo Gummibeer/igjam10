@@ -1,4 +1,5 @@
 var ActionButton = function (options) {
+    this.background = options.background;
     this.backgroundSprite = game.add.sprite(options.x, options.y, options.background);
     this.backgroundWhileDragging = options.backgroundWhileDragging;
     this.dragSprite = game.add.sprite(options.x, options.y, options.dragImage);
