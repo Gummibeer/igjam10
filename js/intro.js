@@ -6,7 +6,7 @@ intro.prototype = {
         console.log('intro.create');
         if(!this.game.displayTutorial) {
             this.game.state.clearCurrentState();
-            this.game.state.start('Level', true, false, 'level-1');
+            this.game.state.start('Level', true, false, 'level-0');
         }
     },
     update: function() {
@@ -14,7 +14,7 @@ intro.prototype = {
 
         function onInput() {
             game.state.clearCurrentState();
-            game.state.start('Level', true, false, 'level-1');
+            game.state.start('Level', true, false, 'level-0');
         }
 
         this.game.input.keyboard.onDownCallback = onInput;
