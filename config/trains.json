@@ -6,5 +6,9 @@
   "red": {
     "image": "red",
     "speed": 3.6
+  },
+  "blue": {
+    "image": "blue",
+    "speed": 4.2
   }
 }
