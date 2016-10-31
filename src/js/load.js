@@ -9,7 +9,7 @@ load.prototype = {
         this.load.setPreloadSprite(loadingBar);
 
         // Menu
-        this.game.load.image('btn_start', 'src/img/btn_start.png');
+        this.game.load.image('btn_start', 'src/img/ui/btn_start.png');
 
         // Configs
         this.game.load.json('trains', 'src/config/trains.json');
@@ -48,40 +48,40 @@ load.prototype = {
         this.game.load.image('tex_train_tail_purple', 'src/img/textures/train_tail_purple.png');
 
         // UI
-        this.game.load.image('ui_button_slow_down', 'src/img/ui_button_slow_down.png');
-        this.game.load.image('ui_button_slow_down_active', 'src/img/ui_button_slow_down_active.png');
-        this.game.load.image('ui_slow_down_dragging', 'src/img/ui_slow_down_dragging.png');
-        this.game.load.image('ui_button_speed_up', 'src/img/ui_button_speed_up.png');
-        this.game.load.image('ui_button_speed_up_active', 'src/img/ui_button_speed_up_active.png');
-        this.game.load.image('ui_speed_up_dragging', 'src/img/ui_speed_up_dragging.png');
-        this.game.load.image('ui_ant_scientist', 'src/img/ui_ant_scientist.png');
+        this.game.load.image('ui_button_slow_down', 'src/img/ui/button_slow_down.png');
+        this.game.load.image('ui_button_slow_down_active', 'src/img/ui/button_slow_down_active.png');
+        this.game.load.image('ui_slow_down_dragging', 'src/img/ui/slow_down_dragging.png');
+        this.game.load.image('ui_button_speed_up', 'src/img/ui/button_speed_up.png');
+        this.game.load.image('ui_button_speed_up_active', 'src/img/ui/button_speed_up_active.png');
+        this.game.load.image('ui_speed_up_dragging', 'src/img/ui/speed_up_dragging.png');
+        this.game.load.image('ui_ant_scientist', 'src/img/ui/ant_scientist.png');
 
         // Backgrounds
-        this.game.load.image('bg_menu', 'src/img/bg_menu.jpg');
-        this.game.load.image('bg_level_picker', 'src/img/bg_level_picker.jpg');
-        this.game.load.image('bg_intro', 'src/img/bg_intro.jpg');
-        this.game.load.image('bg_level_0', 'src/img/bg_level_0.jpg');
-        this.game.load.image('bg_level_1', 'src/img/bg_level_1.jpg');
-        this.game.load.image('bg_level_2', 'src/img/bg_level_2.jpg');
-        this.game.load.image('bg_level_3', 'src/img/bg_level_3.jpg');
-        this.game.load.image('bg_level_4', 'src/img/bg_level_4.jpg');
-        this.game.load.image('bg_game_over_cemetery', 'src/img/bg_game_over_cemetery.jpg');
-        this.game.load.image('bg_game_over_coffin', 'src/img/bg_game_over_coffin.jpg');
-        this.game.load.image('bg_game_over_skull', 'src/img/bg_game_over_skull.jpg');
-        this.game.load.image('bg_game_over_blood', 'src/img/bg_game_over_blood.jpg');
-        this.game.load.image('bg_game_over_crutch', 'src/img/bg_game_over_crutch.jpg');
+        this.game.load.image('bg_menu', 'src/img/screens/bg_menu.jpg');
+        this.game.load.image('bg_level_picker', 'src/img/screens/bg_level_picker.jpg');
+        this.game.load.image('bg_intro', 'src/img/screens/bg_intro.jpg');
+        this.game.load.image('bg_level_0', 'src/img/levels/bg_level_0.jpg');
+        this.game.load.image('bg_level_1', 'src/img/levels/bg_level_1.jpg');
+        this.game.load.image('bg_level_2', 'src/img/levels/bg_level_2.jpg');
+        this.game.load.image('bg_level_3', 'src/img/levels/bg_level_3.jpg');
+        this.game.load.image('bg_level_4', 'src/img/levels/bg_level_4.jpg');
+        this.game.load.image('bg_game_over_cemetery', 'src/img/screens/bg_game_over_cemetery.jpg');
+        this.game.load.image('bg_game_over_coffin', 'src/img/screens/bg_game_over_coffin.jpg');
+        this.game.load.image('bg_game_over_skull', 'src/img/screens/bg_game_over_skull.jpg');
+        this.game.load.image('bg_game_over_blood', 'src/img/screens/bg_game_over_blood.jpg');
+        this.game.load.image('bg_game_over_crutch', 'src/img/screens/bg_game_over_crutch.jpg');
 
-        this.game.load.image('bg_game_won_candy_1', 'src/img/bg_game_won_candy_1.jpg');
-        this.game.load.image('bg_game_won_candy_2', 'src/img/bg_game_won_candy_2.jpg');
-        this.game.load.image('bg_game_won_corn', 'src/img/bg_game_won_corn.jpg');
-        this.game.load.image('bg_game_won_centipede', 'src/img/bg_game_won_centipede.jpg');
+        this.game.load.image('bg_game_won_candy_1', 'src/img/screens/bg_game_won_candy_1.jpg');
+        this.game.load.image('bg_game_won_candy_2', 'src/img/screens/bg_game_won_candy_2.jpg');
+        this.game.load.image('bg_game_won_corn', 'src/img/screens/bg_game_won_corn.jpg');
+        this.game.load.image('bg_game_won_centipede', 'src/img/screens/bg_game_won_centipede.jpg');
 
         // Foregrounds
-        this.game.load.image('fg_level_0', 'src/img/fg_level_0.png');
-        this.game.load.image('fg_level_1', 'src/img/fg_level_1.png');
-        this.game.load.image('fg_level_2', 'src/img/fg_level_2.png');
-        this.game.load.image('fg_level_3', 'src/img/fg_level_3.png');
-        this.game.load.image('fg_level_4', 'src/img/fg_level_4.png');
+        this.game.load.image('fg_level_0', 'src/img/levels/fg_level_0.png');
+        this.game.load.image('fg_level_1', 'src/img/levels/fg_level_1.png');
+        this.game.load.image('fg_level_2', 'src/img/levels/fg_level_2.png');
+        this.game.load.image('fg_level_3', 'src/img/levels/fg_level_3.png');
+        this.game.load.image('fg_level_4', 'src/img/levels/fg_level_4.png');
 
         // Images
         this.game.load.image('circle_black', 'src/img/circle_black.png');
