@@ -48,7 +48,7 @@ level.prototype = {
 
         this.background = this.game.add.image(0, 0, this.config.level.backgroundImage);
         this.foreground = this.game.add.image(0, 0, this.config.level.foregroundImage);
-        this.groups.ui.add(this.game.add.image(this.game.world.width - 169 - 20, this.game.world.height - 182 - 20, 'ui_ant_scientist'));
+        this.groups.ui.add(this.game.add.image(this.game.world.width - 170 - 20, this.game.world.height - 185 - 20, 'ui_ant_scientist'));
 
         this.music = this.game.add.audio('bg_ingame');
         this.music.loopFull();
