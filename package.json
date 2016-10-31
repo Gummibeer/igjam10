@@ -1,8 +1,8 @@
 {
-  "name": "gj2016",
+  "name": "igjam10",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Result of the InnoGames GameJam #10",
+  "main": "index.html",
   "scripts": {
     "start": "node node_modules/http-server/bin/http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/Gummibeer/igjam10.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Powerful-Panda-Productions",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Gummibeer/igjam10/issues"
   },
