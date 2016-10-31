@@ -14,36 +14,46 @@ levelpicker.prototype = {
 
         this.levels = this.game.cache.getJSON('levels');
 
-        this.game.stage.backgroundColor = '#c0c0c0';
+        this.game.add.image(0, 0, 'bg_level_picker');
 
+        var col = 4;
+        var p = 40;
+        var w = ((game.world.width - (p * 2)) / col) - p;
+        var h = ((game.world.height - (p * 2)) / Math.max(Math.ceil(this.levels.length / col), 4)) - p;
         this.levels.forEach(function(level, index) {
-            var xi = index % 4;
-            var yi = Math.floor(index / 4);
-            var p = 40;
-            var w = 270;
-            var h = 130;
+            var unlocked = localStorage.getItem(level.config+'-unlocked');
+            var finished = localStorage.getItem(level.config+'-finished');
+
+            var xi = index % col;
+            var yi = Math.floor(index / col);
             var x = p + ((w + p) * xi);
             var y = p + ((h + p) * yi);
 
             var box = game.add.graphics();
-            box.beginFill(0x000000, 0.2);
+            box.beginFill(0x000000, 0.1);
+            if(unlocked) {
+                box.beginFill(0x000000, 0.75);
+                if(finished) {
+                    box.beginFill(0x63ce0d, 0.75);
+                }
+                box.inputEnabled = true;
+                box.input.useHandCursor = true;
+                box.events.onInputDown.add(function() {
+                    console.log('clicked', level);
+                    game.state.clearCurrentState();
+                    game.state.start('Intro', true, false, level.config);
+                });
+            }
             box.drawRect(x, y, w, h);
-            box.inputEnabled = true;
-            box.events.onInputDown.add(function() {
-                console.log('clicked', level);
-                game.state.clearCurrentState();
-                game.state.start('Intro', true, false, level.config);
-            });
 
             var style = {
                 font: "bold 32px Arial",
-                fill: "#fff",
+                fill: "#ffffff",
                 boundsAlignH: "center",
                 boundsAlignV: "middle"
             };
 
             var text = game.add.text(0, 0, level.name, style);
-            text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
             text.setTextBounds(x, y, w, h);
         });
 

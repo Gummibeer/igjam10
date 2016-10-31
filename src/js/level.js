@@ -40,6 +40,8 @@ level.prototype = {
         this.config.level = this.game.cache.getJSON(this.name);
         this.config.trains = this.game.cache.getJSON('trains');
 
+        localStorage.setItem(this.name+'-unlocked', true);
+
         this.groups.trains = this.game.add.group();
         this.groups.ui = this.game.add.group();
         this.groups.domes = this.game.add.group();
@@ -291,6 +293,7 @@ level.prototype = {
         if (allArrived) {
             this.active = false;
             var nextLevel = this.config.level.nextLevel;
+            localStorage.setItem(this.name+'-finished', true);
             if (nextLevel) {
                 tween.onComplete.add(function() {
                     this.game.state.clearCurrentState();

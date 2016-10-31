@@ -58,6 +58,7 @@ load.prototype = {
 
         // Backgrounds
         this.game.load.image('bg_menu', 'src/img/bg_menu.jpg');
+        this.game.load.image('bg_level_picker', 'src/img/bg_level_picker.jpg');
         this.game.load.image('bg_intro', 'src/img/bg_intro.jpg');
         this.game.load.image('bg_level_0', 'src/img/bg_level_0.jpg');
         this.game.load.image('bg_level_1', 'src/img/bg_level_1.jpg');
