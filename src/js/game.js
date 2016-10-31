@@ -1,6 +1,17 @@
 'use strict';
 
 if (typeof(Storage) !== "undefined") {
+    var WebFontConfig = {
+        google: {
+            families: [
+                'Coiny'
+            ]
+        },
+        custom: {
+            families: [ 'FontAwesome' ]
+        }
+    };
+
     localStorage.setItem('level-0-unlocked', true);
 
     var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'stage', {});

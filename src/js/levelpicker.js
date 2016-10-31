@@ -29,12 +29,17 @@ levelpicker.prototype = {
             var x = p + ((w + p) * xi);
             var y = p + ((h + p) * yi);
 
+            var img = game.add.sprite(x, y, 'bg_intro');
+            img.anchor.setTo(0, 0);
+            var rect = new Phaser.Rectangle(0, 0, w, h);
+            img.crop(rect);
+
             var box = game.add.graphics();
-            box.beginFill(0x000000, 0.1);
+            box.beginFill(0x000000, 1);
             if(unlocked) {
-                box.beginFill(0x000000, 0.75);
+                box.beginFill(0x000000, 0.5);
                 if(finished) {
-                    box.beginFill(0x63ce0d, 0.75);
+                    box.beginFill(0xffffff, 0);
                 }
                 box.inputEnabled = true;
                 box.input.useHandCursor = true;
@@ -45,16 +50,35 @@ levelpicker.prototype = {
                 });
             }
             box.drawRect(x, y, w, h);
+            box.endFill();
 
-            var style = {
-                font: "bold 32px Arial",
+            var text = game.add.text(0, 0, level.name, {
+                font: "32px Coiny",
                 fill: "#ffffff",
                 boundsAlignH: "center",
                 boundsAlignV: "middle"
-            };
+            });
+            text.setTextBounds(x, y, w, h / 2);
+            text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 
-            var text = game.add.text(0, 0, level.name, style);
-            text.setTextBounds(x, y, w, h);
+            var icon = ' ';
+            var color = '#ffffff';
+            if(unlocked) {
+                icon = ' ';
+                color = '#ffffff';
+                if(finished) {
+                    icon = ' ';
+                    color = '#f0c419';
+                }
+            }
+            icon = game.add.text(0, 0, icon, {
+                font: "32px FontAwesome",
+                fill: color,
+                boundsAlignH: "center",
+                boundsAlignV: "middle"
+            });
+            icon.setTextBounds(x, y + h / 2, w, h / 2);
+            icon.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
         });
 
         this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.ESC]);
