@@ -9,7 +9,7 @@ load.prototype = {
         this.load.setPreloadSprite(loadingBar);
 
         // Google WebFonts
-        game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+        this.game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
         // Menu
         this.game.load.image('btn_start', 'src/img/ui/btn_start.png');

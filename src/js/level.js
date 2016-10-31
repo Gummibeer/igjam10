@@ -37,6 +37,13 @@ level.prototype = {
     },
     create: function () {
         console.log('level.create');
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Level',
+            eventAction: 'start',
+            eventLabel: this.name
+        });
+
         this.config.level = this.game.cache.getJSON(this.name);
         this.config.trains = this.game.cache.getJSON('trains');
 
@@ -291,6 +298,12 @@ level.prototype = {
         });
         var tween = this.game.add.tween(this.circleBlack.scale).to({x:3.5, y:3.5}, 1000, Phaser.Easing.Exponential.Out);
         if (allArrived) {
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Level',
+                eventAction: 'success',
+                eventLabel: this.name
+            });
             this.active = false;
             var nextLevel = this.config.level.nextLevel;
             localStorage.setItem(this.name+'-finished', true);
@@ -308,6 +321,12 @@ level.prototype = {
             this.music.stop();
             tween.start();
         } else if(someDestroyed) {
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Level',
+                eventAction: 'fail',
+                eventLabel: this.name
+            });
             this.active = false;
             tween.onComplete.add(function() {
                 this.game.state.clearCurrentState();
