@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Level 1",
+    "config": "level-0"
+  },
+  {
+    "name": "Level 2",
+    "config": "level-1"
+  },
+  {
+    "name": "Level 3",
+    "config": "level-2"
+  },
+  {
+    "name": "Level 4",
+    "config": "level-3"
+  },
+  {
+    "name": "Level 5",
+    "config": "level-4"
+  }
+]

@@ -27,6 +27,7 @@ level.prototype = {
         this.trains = [];
         this.actionButtons = [];
         this.speedUp = null;
+        this.active = false;
         this.speedUpDome = null;
         this.slowDown = null;
         this.slowDownDome = null;

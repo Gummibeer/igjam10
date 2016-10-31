@@ -15,13 +15,13 @@ menu.prototype = {
     click: function () {
         console.log('menu.click');
         this.game.state.clearCurrentState();
-        this.game.state.start('Intro');
+        this.game.state.start('LevelPicker');
     },
     update: function() {
         //console.log('menu.update');
         if (this.keys.enter.isDown || this.keys.space.isDown) {
             this.game.state.clearCurrentState();
-            this.game.state.start('Intro');
+            this.game.state.start('LevelPicker');
             return true;
         }
     }

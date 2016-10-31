@@ -13,6 +13,7 @@ load.prototype = {
 
         // Configs
         this.game.load.json('trains', 'src/config/trains.json');
+        this.game.load.json('levels', 'src/config/levels.json');
         this.game.load.json('level-0', 'src/config/level-0.json');
         this.game.load.json('level-1', 'src/config/level-1.json');
         this.game.load.json('level-2', 'src/config/level-2.json');
