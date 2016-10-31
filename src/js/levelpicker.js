@@ -21,8 +21,8 @@ levelpicker.prototype = {
         var w = ((game.world.width - (p * 2)) / col) - p;
         var h = ((game.world.height - (p * 2)) / Math.max(Math.ceil(this.levels.length / col), 4)) - p;
         this.levels.forEach(function(level, index) {
-            var unlocked = localStorage.getItem(level.config+'-unlocked');
-            var finished = localStorage.getItem(level.config+'-finished');
+            var unlocked = JSON.parse(localStorage.getItem(level.config+'-unlocked'));
+            var finished = JSON.parse(localStorage.getItem(level.config+'-finished'));
 
             var xi = index % col;
             var yi = Math.floor(index / col);
