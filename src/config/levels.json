@@ -1,22 +1,27 @@
 [
   {
     "name": "Level 1",
-    "config": "level-0"
+    "config": "level-0",
+    "icon": ""
   },
   {
     "name": "Level 2",
-    "config": "level-1"
+    "config": "level-1",
+    "icon": ""
   },
   {
     "name": "Level 3",
-    "config": "level-2"
+    "config": "level-2",
+    "icon": ""
   },
   {
     "name": "Level 4",
-    "config": "level-3"
+    "config": "level-3",
+    "icon": ""
   },
   {
     "name": "Level 5",
-    "config": "level-4"
+    "config": "level-4",
+    "icon": ""
   }
 ]

@@ -61,17 +61,17 @@ levelpicker.prototype = {
             text.setTextBounds(x, y, w, h / 2);
             text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 
-            var icon = ' ';
+            var icon = '';
             var color = '#ffffff';
             if(unlocked) {
-                icon = ' ';
+                icon = '';
                 color = '#ffffff';
                 if(finished) {
-                    icon = ' ';
+                    icon = level.icon;
                     color = '#f0c419';
                 }
             }
-            icon = game.add.text(0, 0, icon, {
+            icon = game.add.text(0, 0, icon+' ', {
                 font: "32px FontAwesome",
                 fill: color,
                 boundsAlignH: "center",
