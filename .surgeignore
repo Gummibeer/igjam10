@@ -1,0 +1,9 @@
+/.idea/
+*.iml
+/node_modules/
+*.log
+*.lock
+/src/img/psd/
+package.json
+README.md
+LICENSE

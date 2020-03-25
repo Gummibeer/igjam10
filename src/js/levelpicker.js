@@ -72,7 +72,8 @@ levelpicker.prototype = {
                 }
             }
             icon = game.add.text(0, 0, icon+' ', {
-                font: "32px FontAwesome",
+                font: "Font Awesome 5 Free",
+                fontSize: 32,
                 fill: color,
                 boundsAlignH: "center",
                 boundsAlignV: "middle"
