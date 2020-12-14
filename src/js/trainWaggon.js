@@ -1,5 +1,4 @@
 var TrainWaggon = function () {
-
 };
 
 TrainWaggon.prototype = {
